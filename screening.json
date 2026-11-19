@@ -1,0 +1,141 @@
+{
+  "generated_at": "2026-11-20T02:29:36+08:00",
+  "backtest": {
+    "start_issue": "14001",
+    "start_date": "2014-01-01",
+    "end_issue": "26132",
+    "end_date": "2026-11-18",
+    "draws": 1936,
+    "window": 500,
+    "all_filters_pass": 1429,
+    "all_filters_retention": 0.7381198347107438,
+    "rule_retention": {
+      "sum": 0.9013429752066116,
+      "odd_even": 0.9571280991735537,
+      "span": 0.9163223140495868,
+      "ac_value": 0.9726239669421488,
+      "zone_concentration": 0.9943181818181818,
+      "consecutive": 0.9922520661157025,
+      "repeat_previous": 0.984504132231405,
+      "tail_concentration": 0.9648760330578512,
+      "excluded_numbers": 1.0
+    },
+    "by_year": {
+      "2014": {
+        "draws": 154,
+        "passes": 109,
+        "retention": 0.7077922077922078
+      },
+      "2015": {
+        "draws": 153,
+        "passes": 117,
+        "retention": 0.7647058823529411
+      },
+      "2016": {
+        "draws": 154,
+        "passes": 117,
+        "retention": 0.7597402597402597
+      },
+      "2017": {
+        "draws": 153,
+        "passes": 117,
+        "retention": 0.7647058823529411
+      },
+      "2018": {
+        "draws": 154,
+        "passes": 104,
+        "retention": 0.6753246753246753
+      },
+      "2019": {
+        "draws": 150,
+        "passes": 105,
+        "retention": 0.7
+      },
+      "2020": {
+        "draws": 134,
+        "passes": 101,
+        "retention": 0.753731343283582
+      },
+      "2021": {
+        "draws": 150,
+        "passes": 111,
+        "retention": 0.74
+      },
+      "2022": {
+        "draws": 150,
+        "passes": 107,
+        "retention": 0.7133333333333334
+      },
+      "2023": {
+        "draws": 150,
+        "passes": 114,
+        "retention": 0.76
+      },
+      "2024": {
+        "draws": 152,
+        "passes": 110,
+        "retention": 0.7236842105263158
+      },
+      "2025": {
+        "draws": 150,
+        "passes": 120,
+        "retention": 0.8
+      },
+      "2026": {
+        "draws": 132,
+        "passes": 97,
+        "retention": 0.7348484848484849
+      }
+    },
+    "note": "保留率描述历史开奖中满足条件的事实比例，不代表未来命中率；固定购买注数时，单注理论概率不因筛选改变。"
+  },
+  "space": {
+    "thresholds": {
+      "sum_low": 51.0,
+      "sum_high": 123.0,
+      "span_low": 13.0,
+      "span_high": 32.0,
+      "odd_low": 1.0,
+      "odd_high": 4.0,
+      "ac_low": 3.0,
+      "ac_high": 6.0,
+      "max_zone_count": 4.0,
+      "consecutive_max": 2.0,
+      "repeat_max": 2.0,
+      "tail_group_max": 2.0
+    },
+    "accepted_front_combinations": 244429,
+    "front_combinations": 324632,
+    "accepted_back_pairs": 66,
+    "back_pairs": 66,
+    "retained_combinations": 16132314,
+    "total_combinations": 21425712,
+    "coverage": 0.7529417925527983,
+    "excluded_numbers": [],
+    "label": "条件排除仅改变候选覆盖，不提高任一单注概率"
+  },
+  "filters": {
+    "hard": [
+      "号码范围",
+      "组合数量",
+      "用户指定排除号码"
+    ],
+    "structural": [
+      "和值",
+      "奇偶",
+      "跨度",
+      "AC值",
+      "三区集中度",
+      "连号",
+      "上期重号",
+      "尾数集中度"
+    ],
+    "soft_only": [
+      "冷热",
+      "遗漏",
+      "z-score",
+      "多窗口共识"
+    ]
+  },
+  "warning": "筛选只用于约束候选空间与票包结构；固定购买注数时，所有单注的一等奖理论概率仍相同。"
+}

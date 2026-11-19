@@ -1,0 +1,1427 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="以大乐透下一期为主线的模型、规律与覆盖方案分析">
+  <title>彩票研究台 · Lottery Model Lab</title>
+  <link rel="preload" href="./overview.json" as="fetch" type="application/json" crossorigin>
+  <link rel="stylesheet" href="./styles.css?v=20261120-extra">
+  <link rel="stylesheet" href="./lottery.css?v=20261120-extra">
+</head>
+<body>
+  <div class="page-glow" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#overview" aria-label="返回总览">
+      <span class="brand-mark">大</span>
+      <span>
+        <strong>彩票研究台</strong>
+        <small>LOTTERY ANALYSIS</small>
+      </span>
+    </a>
+    <nav class="top-nav" aria-label="主导航">
+      <button class="nav-button is-active" type="button" data-tab="overview">总体</button>
+      <button class="nav-button" type="button" data-tab="models">模型</button>
+      <button class="nav-button" type="button" data-tab="multi">彩种</button>
+      <button class="nav-button" type="button" data-tab="backtest">回测</button>
+      <button class="nav-button" type="button" data-tab="cycles">规律</button>
+      <button class="nav-button" type="button" data-tab="quant">工具</button>
+      <button class="nav-button" type="button" data-tab="data">数据</button>
+    </nav>
+    <div class="header-actions">
+      <button class="update-button" id="update-data" type="button">
+        <span class="update-dot" id="update-dot"></span>
+        <span id="update-status">检查开奖</span>
+      </button>
+      <button class="icon-button" id="export-button" type="button" aria-label="导出分析 JSON" title="导出分析 JSON">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="verdict-strip" aria-label="本期判定">
+      <button class="verdict-strip-main" id="verdict-toggle" type="button"
+        aria-expanded="false" aria-controls="verdict-evidence">
+        <span class="verdict-mark is-pending" id="verdict-mark" aria-hidden="true"></span>
+        <span>
+          <strong id="verdict-headline">正在核对回测证据</strong>
+          <small id="verdict-summary">历史数据只用于验证，不改变单注理论概率</small>
+        </span>
+        <span class="verdict-chevron" aria-hidden="true">⌄</span>
+      </button>
+    </section>
+
+    <section class="evidence-section" id="evidence-section" aria-labelledby="evidence-title">
+      <details id="verdict-evidence">
+        <summary id="evidence-title">查看证据：数据、切分、候选、区间与回落基线原因</summary>
+        <div class="evidence-grid">
+          <div><span>数据量</span><strong id="evidence-draws">—</strong></div>
+          <div><span>开发 / 验证</span><strong id="evidence-development">—</strong></div>
+          <div><span>独立留出</span><strong id="evidence-holdout">—</strong></div>
+          <div><span>候选配置</span><strong id="evidence-candidates">—</strong></div>
+          <div><span>95% CI</span><strong id="evidence-ci">—</strong></div>
+          <div><span>当前采用</span><strong id="evidence-selected">—</strong></div>
+        </div>
+        <p id="evidence-reason">正在读取分析结果。</p>
+        <p class="fact-note">候选模型未通过显著性门槛时，系统固定回落到均匀基线。</p>
+      </details>
+    </section>
+    <div class="data-load-state" id="data-load-state" role="status" aria-live="polite" hidden>
+      <span class="data-load-spinner" aria-hidden="true"></span>
+      <span>正在加载详细数据…</span>
+    </div>
+
+    <section class="lab-card calculator-card" id="calculator" aria-labelledby="calculator-title">
+      <div class="lab-heading">
+        <div>
+          <p class="section-kicker">COMBINATION CALCULATOR</p>
+          <h2 id="calculator-title">组合计算器</h2>
+          <p>先核对注数、金额、覆盖率与理论概率。这里不使用冷热号或历史信号。</p>
+        </div>
+        <span class="rule-label">规则生成，非预测</span>
+      </div>
+      <form id="bet-form" class="bet-form">
+        <label>
+          <span>彩种</span>
+          <select class="form-select" id="bet-game">
+            <option value="dlt">大乐透</option>
+            <option value="ssq">双色球</option>
+            <option value="pl3">排列3</option>
+            <option value="pl5">排列5</option>
+            <option value="kl8">快乐8</option>
+          </select>
+        </label>
+        <label>
+          <span>玩法 / 结构</span>
+          <select class="form-select" id="bet-structure">
+            <option value="auto">自动选择预算内结构</option>
+            <option value="compound">复式</option>
+            <option value="dantuo">胆拖</option>
+            <option value="low_overlap">低重叠独立单式</option>
+            <option value="single">单式</option>
+          </select>
+        </label>
+        <label id="kl8-play-field" hidden>
+          <span>快乐8玩法</span>
+          <select class="form-select" id="bet-play">
+            <option value="1">选一</option>
+            <option value="2">选二</option>
+            <option value="3">选三</option>
+            <option value="4">选四</option>
+            <option value="5">选五</option>
+            <option value="6">选六</option>
+            <option value="7">选七</option>
+            <option value="8">选八</option>
+            <option value="9">选九</option>
+            <option value="10" selected>选十</option>
+          </select>
+        </label>
+        <label data-main-field>
+          <span id="main-count-label">前区 / 红球个数</span>
+          <input class="form-control numeric" id="bet-main-count" type="number" min="1" max="80" value="6">
+        </label>
+        <label data-bonus-field>
+          <span id="bonus-count-label">后区 / 蓝球个数</span>
+          <input class="form-control numeric" id="bet-bonus-count" type="number" min="1" max="16" value="1">
+        </label>
+        <label data-dantuo-field hidden>
+          <span>胆码个数</span>
+          <input class="form-control numeric" id="bet-leaders" type="number" min="1" max="5" value="1">
+        </label>
+        <label data-dantuo-field hidden>
+          <span>拖码个数</span>
+          <input class="form-control numeric" id="bet-draggers" type="number" min="1" max="32" value="5">
+        </label>
+        <label>
+          <span>预算上限（元）</span>
+          <input class="form-control numeric" id="bet-budget" type="number" min="2" step="2" value="20">
+        </label>
+        <label>
+          <span>注数上限</span>
+          <input class="form-control numeric" id="bet-max-tickets" type="number" min="1" max="5000" value="10">
+        </label>
+        <label>
+          <span>随机种子</span>
+          <input class="form-control numeric" id="bet-seed" type="number" min="0" value="20261117">
+        </label>
+      </form>
+      <div class="bet-actions">
+        <button class="primary-button" id="bet-calculate" type="button">计算注数与金额</button>
+        <button class="secondary-button" id="bet-generate" type="button">生成覆盖票包</button>
+        <span id="bet-error" class="form-error" role="alert"></span>
+      </div>
+      <div class="bet-metrics" id="bet-metrics" aria-live="polite">
+        <div><span>注数</span><strong id="bet-ticket-count">—</strong></div>
+        <div><span>金额</span><strong id="bet-amount">—</strong></div>
+        <div><span>覆盖率</span><strong id="bet-coverage">—</strong></div>
+        <div><span>理论概率</span><strong id="bet-probability">—</strong></div>
+      </div>
+      <div class="payout-panel" id="payout-panel" hidden>
+        <div class="payout-heading">
+          <strong>快乐8奖金结构</strong>
+          <span id="payout-status">待填</span>
+        </div>
+        <div class="table-wrap">
+          <table class="payout-table">
+            <thead><tr><th>命中个数</th><th class="numeric">单注奖金</th></tr></thead>
+            <tbody id="payout-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <p class="fact-note" id="bet-note">覆盖率表示票包覆盖的完整组合占比，不提高任一单注的理论概率。</p>
+    </section>
+
+    <section class="lab-card recent-five-card" aria-labelledby="recent-five-title">
+      <div class="lab-heading">
+        <div>
+          <p class="section-kicker">LAST FIVE DRAWS</p>
+          <h2 id="recent-five-title">近 5 期事实</h2>
+          <p>仅做描述性统计，不由此区块生成号码。</p>
+        </div>
+        <select class="form-select compact-select" id="recent-five-game" aria-label="选择近五期彩种">
+          <option value="dlt">大乐透</option>
+          <option value="ssq">双色球</option>
+          <option value="pl3">排列3</option>
+          <option value="pl5">排列5</option>
+          <option value="kl8">快乐8</option>
+        </select>
+      </div>
+      <div class="table-wrap recent-five-table-wrap">
+        <table class="recent-five-table">
+          <thead>
+            <tr>
+              <th>期号</th><th>开奖日期</th><th id="recent-main-head">前区 / 红球</th>
+              <th id="recent-bonus-head">后区 / 蓝球</th><th class="numeric">和值</th>
+              <th class="numeric">奇偶比</th><th class="numeric">三段比</th>
+              <th class="numeric">对上一期重号</th><th class="numeric">对20期前重号</th>
+            </tr>
+          </thead>
+          <tbody id="recent-five-body">
+            <tr><td colspan="9">正在读取本地事实数据…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fact-note">以上为已经发生的事实，不含预测成分</p>
+    </section>
+
+    <section class="lab-card package-card" aria-labelledby="package-title">
+      <div class="lab-heading">
+        <div>
+          <p class="section-kicker">COVERAGE PACKAGE</p>
+          <h2 id="package-title">覆盖票包（规则生成）</h2>
+          <p>固定预算、注数上限和种子生成；相同参数可复现同一票包。</p>
+        </div>
+        <button class="secondary-button subtle-button" id="copy-package" type="button" disabled>复制票包</button>
+      </div>
+      <div class="package-meta" id="package-meta">尚未生成票包</div>
+      <div class="package-lines" id="package-lines"></div>
+      <p class="fact-note" id="package-note">本票包由预算与低重叠规则生成，历史数据只用于展示，不参与选号。规则生成，非预测。</p>
+    </section>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span> EVIDENCE-FIRST DECISION SYSTEM</p>
+        <h1 id="page-title">结论先行，<br><em>证据随后。</em></h1>
+        <p class="hero-lead">只看三件事：是否有效、是否稳定、是否值得进入下一步。任何候选必须通过时间切分、显著性和独立留出复核。</p>
+        <div class="hero-meta" id="hero-meta" aria-live="polite">
+          <span>正在读取本地分析结果…</span>
+        </div>
+      </div>
+      <aside class="next-draw-card" aria-label="下一期预测目标">
+        <div class="ticket-edge" aria-hidden="true"></div>
+        <p class="card-kicker">LIVE DECISION TARGET</p>
+        <div class="next-draw-head">
+          <div>
+            <span class="muted-label">下一期</span>
+            <strong id="next-issue">—</strong>
+          </div>
+          <div>
+            <span class="muted-label">开奖日期</span>
+            <strong id="next-date">—</strong>
+          </div>
+        </div>
+        <div class="last-result">
+          <span class="muted-label">上期开奖</span>
+          <div class="ball-line" id="last-balls" aria-label="上一期号码"></div>
+        </div>
+        <div class="ticket-stamp" id="selection-stamp">等待回测</div>
+      </aside>
+    </section>
+
+    <section class="summary-grid" aria-label="分析概览">
+      <article class="stat-card">
+        <span class="stat-index">01</span>
+        <span class="stat-label">有效样本</span>
+        <strong id="stat-draws">—</strong>
+        <small id="stat-range">数据覆盖区间</small>
+      </article>
+      <article class="stat-card">
+        <span class="stat-index">02</span>
+        <span class="stat-label">候选空间</span>
+        <strong id="stat-candidates">—</strong>
+        <small>固定假设 + 随机权重搜索</small>
+      </article>
+      <article class="stat-card">
+        <span class="stat-index">03</span>
+        <span class="stat-label">未触碰留出</span>
+        <strong id="stat-holdout">—</strong>
+        <small id="stat-holdout-range">最近连续期数</small>
+      </article>
+      <article class="stat-card accent-card">
+        <span class="stat-index">04</span>
+        <span class="stat-label">执行结论</span>
+        <strong id="stat-verdict">—</strong>
+        <small id="stat-gain">相对均匀基线</small>
+      </article>
+    </section>
+
+    <article class="card shortterm-card">
+      <div class="shortterm-heading">
+        <div>
+          <p class="section-kicker">SHORT-TERM ADAPTIVE LOOP</p>
+          <h2>短期开奖复盘与下一期套用</h2>
+          <p id="shortterm-target">—</p>
+        </div>
+        <span class="status-pill" id="shortterm-policy-pill">分析中</span>
+      </div>
+      <section class="regime-audit" aria-labelledby="regime-title">
+        <div class="regime-head">
+          <div>
+            <p class="section-kicker">CHANGING-REGIME STATE MACHINE</p>
+            <h3 id="regime-title">规律变化状态机</h3>
+            <p>五期只作为观察窗口。每进入一个新的五期块，只根据此前已结算的开奖，在延续、反转和中性之间重新选择。</p>
+          </div>
+          <span class="status-pill" id="regime-status">分析中</span>
+        </div>
+        <div class="regime-rule-strip" aria-label="动态规律审计流程">
+          <div><span>01</span><strong>五期观察</strong><small>短窗相对十期背景</small></div>
+          <i aria-hidden="true">→</i>
+          <div><span>02</span><strong>三方假设</strong><small>延续 / 反转 / 中性</small></div>
+          <i aria-hidden="true">→</i>
+          <div><span>03</span><strong>块前冻结</strong><small>块内不得反改方向</small></div>
+          <i aria-hidden="true">→</i>
+          <div><span>04</span><strong>留出复核</strong><small>失败即回落中性</small></div>
+        </div>
+        <div class="regime-metrics">
+          <div><span>当前状态</span><strong id="regime-current">—</strong><small>下一五期块</small></div>
+          <div><span>验证改善</span><strong id="regime-validation">—</strong><small id="regime-ci">95% CI —</small></div>
+          <div><span>独立留出</span><strong id="regime-holdout">—</strong><small>相对中性基线</small></div>
+          <div><span>留出切换</span><strong id="regime-switches">—</strong><small id="regime-block-count">—</small></div>
+        </div>
+        <p class="regime-verdict" id="regime-verdict">—</p>
+        <div class="regime-signal-grid">
+          <div>
+            <span class="muted-label">五期加速号 · 仅解释状态</span>
+            <div class="regime-number-line" id="regime-accelerating"></div>
+          </div>
+          <div>
+            <span class="muted-label">五期减速号 · 仅解释状态</span>
+            <div class="regime-number-line" id="regime-decelerating"></div>
+          </div>
+        </div>
+        <div class="table-wrap regime-table-wrap">
+          <table class="regime-table">
+            <thead>
+              <tr>
+                <th>五期块</th><th>块前选择</th><th class="numeric">延续证据</th>
+                <th class="numeric">反转证据</th><th class="numeric">块内动态改善</th><th>赛后状态</th>
+              </tr>
+            </thead>
+            <tbody id="regime-block-body"></tbody>
+          </table>
+        </div>
+        <p class="fact-note" id="regime-leakage-note">规则生成，非预测。方向选择不使用块内开奖。</p>
+      </section>
+      <div class="shortterm-flow">
+        <div class="actual-review">
+          <span class="muted-label">最近开奖</span>
+          <div class="ball-line" id="shortterm-latest-balls"></div>
+          <p id="shortterm-attribution">—</p>
+        </div>
+        <i class="flow-arrow" aria-hidden="true">→</i>
+        <div class="next-review">
+          <span class="muted-label">开奖后学习，套用到下一期</span>
+          <strong id="shortterm-next-policy">—</strong>
+          <div class="ball-line" id="shortterm-next-balls"></div>
+          <small id="shortterm-next-logic">—</small>
+        </div>
+      </div>
+      <div class="shortterm-metrics">
+        <div><span>短周期切换</span><strong id="shortterm-meta-prize">—</strong><small>最近240期任意奖命中</small></div>
+        <div><span>五策略票包</span><strong id="shortterm-pack-rate">—</strong><small>每期五张不同逻辑票</small></div>
+        <div><span>当前更新</span><strong id="shortterm-update-state">—</strong><small>官方开奖自动检查</small></div>
+      </div>
+      <div class="table-wrap shortterm-table-wrap">
+        <table>
+          <thead><tr><th>短期策略</th><th>逻辑</th><th class="numeric">前区命中</th><th class="numeric">后区命中</th><th class="numeric">任意奖命中</th></tr></thead>
+          <tbody id="shortterm-table-body"></tbody>
+        </table>
+      </div>
+      <div class="pattern-strip">
+        <div>
+          <p class="section-kicker">MORPHOLOGY CHECK</p>
+          <h3>连号与重号形态</h3>
+          <p id="pattern-verdict">—</p>
+        </div>
+        <div class="pattern-window-grid" id="pattern-window-grid"></div>
+        <div class="pattern-inspiration">
+          <span class="muted-label">形态灵感票</span>
+          <div class="ball-line" id="pattern-ticket"></div>
+          <small>仅作结构娱乐，不提高中奖概率</small>
+        </div>
+      </div>
+      <p class="shortterm-warning">短期模型优化的是近期命中覆盖，不可能保证下一期中奖。开奖号码只用于事后复盘和滚动更新，不能提前获得。</p>
+    </article>
+
+    <div class="tab-panels">
+      <section class="tab-panel is-active" id="panel-overview" data-panel="overview" aria-labelledby="page-title">
+        <section class="lottery-tree" id="lottery-tree" aria-label="彩票总体结构">
+          <div class="tree-meta-line">
+            <span>总体结构</span>
+            <span>大乐透下一期 <b id="tree-issue">—</b></span>
+            <span id="tree-date">—</span>
+          </div>
+          <div class="tree-root-node">
+            <span class="tree-node-index">ROOT</span>
+            <div>
+              <strong>彩票</strong>
+              <small id="tree-state">正在汇总结论</small>
+            </div>
+            <div class="tree-root-metrics">
+              <span><b id="tree-game-count">—</b>彩种</span>
+              <span><b id="tree-model-count">—</b>模型族</span>
+              <span><b id="tree-validation-count">—</b>滚动验证</span>
+            </div>
+          </div>
+          <div class="tree-trunk" aria-hidden="true"></div>
+          <div class="game-tree-grid" id="tree-game-grid">
+            <p class="empty-state">正在加载五个彩种分支…</p>
+          </div>
+        </section>
+
+        <div class="overview-grid">
+          <article class="card verdict-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">AUTONOMOUS VERDICT</p>
+                <h2>自动推演结论</h2>
+              </div>
+              <span class="status-pill" id="gate-status">分析中</span>
+            </div>
+            <div class="selected-model">
+              <span class="model-orb" id="model-orb" aria-hidden="true"></span>
+              <div>
+                <span class="muted-label">实际采用模型</span>
+                <strong id="selected-model">—</strong>
+                <p id="selected-description">—</p>
+              </div>
+            </div>
+            <p class="verdict-copy" id="selection-reason">—</p>
+            <div class="interval-panel">
+              <div class="interval-top">
+                <span>开发集 Brier 改善</span>
+                <strong id="ci-label">—</strong>
+              </div>
+              <div class="interval-track" aria-hidden="true">
+                <span class="zero-marker"></span>
+                <span class="interval-band" id="interval-band"></span>
+                <span class="interval-dot" id="interval-dot"></span>
+              </div>
+              <div class="interval-scale" aria-hidden="true">
+                <span>更差</span><span>0 BP</span><span>更好</span>
+              </div>
+            </div>
+            <div class="gate-notes">
+              <p><strong>门槛一</strong><span>95% 区间整体高于 0</span></p>
+              <p><strong>门槛二</strong><span>相对改善至少 0.10%</span></p>
+              <p><strong>门槛三</strong><span>独立留出集不参与选模</span></p>
+            </div>
+          </article>
+
+          <article class="card recommendation-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">NEXT COMBINATIONS</p>
+                <h2>下一期规则票包</h2>
+              </div>
+              <button class="text-button" id="copy-tickets" type="button">复制票包</button>
+            </div>
+            <p class="fact-note">规则生成，非预测。单注理论概率不因组合方式改变。</p>
+            <div id="recommendations" class="ticket-list"></div>
+            <div class="boundary-note">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5m0 3h.01"/></svg>
+              <p>以上号码用于策略展示。单注一等奖理论概率均为 <strong>1 / 21,425,712</strong>。</p>
+            </div>
+          </article>
+        </div>
+
+        <article class="card forecast-compare-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">NEXT ISSUE · STRATEGY MATCH</p>
+              <h3>下一期策略票与 240 期回测</h3>
+              <p class="forecast-target-copy" id="forecast-target">—</p>
+            </div>
+            <span class="quiet-label">Brier 越低越好；单票命中次数仅作观察</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>排名</th>
+                  <th>策略</th>
+                  <th>下一期探索票</th>
+                  <th class="numeric">Brier</th>
+                  <th class="numeric">对照改善</th>
+                  <th class="numeric">前区最高命中</th>
+                  <th class="numeric">任意奖命中</th>
+                </tr>
+              </thead>
+              <tbody id="forecast-table-body"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card signal-card">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">EVIDENCE SNAPSHOT</p>
+              <h2>信号温度计</h2>
+            </div>
+            <span class="quiet-label">近 100 期出现次数</span>
+          </div>
+          <div class="mini-number-map">
+            <div>
+              <div class="map-title"><span>前区</span><small>理论均值 14.3 次</small></div>
+              <div class="number-grid compact" id="overview-front-grid" aria-label="前区近100期出现次数"></div>
+            </div>
+            <div>
+              <div class="map-title"><span>后区</span><small>理论均值 16.7 次</small></div>
+              <div class="number-grid compact back-grid" id="overview-back-grid" aria-label="后区近100期出现次数"></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="panel-models" data-panel="models" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">MODEL ARENA</p>
+            <h2>模型擂台</h2>
+            <p>候选策略只使用当期开奖前的信息评分。Brier 越低越好；改善值为相对均匀基线的基点差。</p>
+          </div>
+          <label class="toggle-label">
+            <input id="show-all-models" type="checkbox">
+            <span>显示完整候选池</span>
+          </label>
+        </div>
+
+        <article class="card fusion-hero">
+          <div class="fusion-hero-copy">
+            <p class="section-kicker">MARKET MODEL FUSION</p>
+            <div class="fusion-title-row">
+              <div>
+                <span class="muted-label">九类公开策略家族 · 堆叠裁决</span>
+                <h3 id="fusion-selected">—</h3>
+              </div>
+              <span class="status-pill" id="fusion-status">分析中</span>
+            </div>
+            <p id="fusion-verdict" class="fusion-verdict">—</p>
+            <div class="fusion-gate-row">
+              <div><span>验证集改善</span><strong id="fusion-validation-gain">—</strong></div>
+              <div><span>95% 区间</span><strong id="fusion-ci">—</strong></div>
+              <div><span>独立留出</span><strong id="fusion-holdout-gain">—</strong></div>
+              <div><span>有效权重</span><strong id="fusion-weight">—</strong></div>
+            </div>
+          </div>
+          <div class="fusion-pipeline" aria-label="融合流程">
+            <div><span>01</span><strong>九类基础模型</strong><small>冷热 · 遗漏 · 动量 · 共现</small></div>
+            <i aria-hidden="true"></i>
+            <div><span>02</span><strong>统一概率空间</strong><small>前后区分别归一化</small></div>
+            <i aria-hidden="true"></i>
+            <div><span>03</span><strong>堆叠与收缩</strong><small>训练集拟合，验证集选强度</small></div>
+            <i aria-hidden="true"></i>
+            <div class="pipeline-gate"><span>04</span><strong>显著性闸门</strong><small>通过后才替换均匀先验</small></div>
+          </div>
+        </article>
+
+        <div class="market-model-grid" id="market-model-grid" aria-label="公开策略家族回测排名"></div>
+
+        <article class="card fusion-detail-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">STACKING RESULT</p>
+              <h3>融合候选排名</h3>
+            </div>
+            <span class="quiet-label">先训练、再验证、最后独立留出</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>排名</th><th>融合候选</th><th class="numeric">验证 Brier</th><th class="numeric">相对均匀</th><th>参与家族</th></tr></thead>
+              <tbody id="fusion-candidate-body"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card composition-card">
+          <div>
+            <p class="section-kicker">COMPOSITION LAYER</p>
+            <h3>组合类模型</h3>
+            <p>这些方法影响“怎么组织注数”，不能直接被当作号码出现概率。</p>
+          </div>
+          <div class="composition-grid" id="composition-grid"></div>
+        </article>
+
+        <div class="section-divider">
+          <span>下方为原有自动权重搜索候选池</span>
+        </div>
+
+        <div class="card model-chart-card">
+          <div class="chart-head">
+            <div>
+              <span class="muted-label">开发集领先者</span>
+              <strong>Brier 改善 / BP</strong>
+            </div>
+            <span class="quiet-label">正值表示优于均匀基线</span>
+          </div>
+          <div id="ranking-chart" class="chart-container"></div>
+        </div>
+        <article class="card table-card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>排名</th>
+                  <th>候选模型</th>
+                  <th>规则摘要</th>
+                  <th class="numeric">Brier</th>
+                  <th class="numeric">改善</th>
+                  <th class="numeric">复杂度</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody id="model-table-body"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="panel-multi" data-panel="multi" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">MULTI-LOTTERY MODEL LAB</p>
+            <h2>多彩种模型实验室</h2>
+            <p>大乐透、双色球、排列3、排列5与快乐8分别读取官方数据、独立训练与归一化。四类模型为马尔科夫链、动量、随机森林和序列 MLP。</p>
+          </div>
+          <span class="quiet-label">训练集 → 验证集 → 独立留出</span>
+        </div>
+        <div class="game-switch" id="multi-game-switch" role="tablist" aria-label="选择彩种"></div>
+        <article class="card multi-summary-card">
+          <div class="multi-summary-head">
+            <div>
+              <p class="section-kicker">CURRENT GAME</p>
+              <h3 id="multi-game-name">—</h3>
+              <p id="multi-rules">—</p>
+            </div>
+            <div class="multi-target">
+              <span>下一期</span>
+              <strong id="multi-next-issue">—</strong>
+              <small id="multi-next-date">—</small>
+            </div>
+          </div>
+          <div class="multi-latest-block">
+            <span class="muted-label">最新开奖</span>
+            <div class="ball-line" id="multi-latest-balls"></div>
+            <p id="multi-history-copy">—</p>
+          </div>
+          <p class="fact-note">下列规则号码均由公开规则和固定种子生成，非预测。</p>
+          <div class="multi-stat-strip">
+            <div><span>平均和值</span><strong id="multi-sum-mean">—</strong></div>
+            <div><span>和值范围</span><strong id="multi-sum-range">—</strong></div>
+            <div><span>平均奇数个数</span><strong id="multi-odd-mean">—</strong></div>
+            <div><span>近期热号</span><strong id="multi-hot-numbers">—</strong></div>
+            <div><span>冷号 / 遗漏</span><strong id="multi-cold-numbers">—</strong></div>
+          </div>
+          <div class="multi-ticket-control">
+            <div>
+              <span class="muted-label">方案注数</span>
+              <strong id="multi-ticket-cost">6元</strong>
+            </div>
+            <div class="segmented-control small" aria-label="方案注数">
+              <button class="multi-ticket-count" type="button" data-count="1">1注</button>
+              <button class="multi-ticket-count is-active" type="button" data-count="3">3注</button>
+              <button class="multi-ticket-count" type="button" data-count="5">5注</button>
+              <button class="multi-ticket-count" type="button" data-count="10">10注</button>
+            </div>
+          </div>
+          <div class="multi-recommendation-grid">
+            <div>
+              <span class="muted-label">滚动规则快照</span>
+              <div class="multi-ticket-list" id="multi-primary-ticket"></div>
+            </div>
+            <div>
+              <span class="muted-label">复式候选池</span>
+              <div class="ball-line" id="multi-compound-ticket"></div>
+            </div>
+            <div>
+              <span class="muted-label">大底</span>
+              <div class="number-grid compact" id="multi-big-pool"></div>
+            </div>
+            <div>
+              <span class="muted-label">胆拖结构</span>
+              <p id="multi-dantuo-copy">—</p>
+            </div>
+          </div>
+          <div class="multi-previous-review">
+            <div>
+              <span class="muted-label">上一期规则快照</span>
+              <div class="ball-line" id="multi-previous-prediction"></div>
+            </div>
+            <div>
+              <span class="muted-label">上一期实际开奖</span>
+              <div class="ball-line" id="multi-previous-actual"></div>
+            </div>
+            <div>
+              <span class="muted-label">命中复盘</span>
+              <strong id="multi-previous-result">—</strong>
+              <small id="multi-previous-note">—</small>
+            </div>
+          </div>
+        </article>
+        <article class="card multi-model-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">MODEL COMPARISON</p>
+              <h3>各模型独立回测</h3>
+            </div>
+            <span class="quiet-label">Brier 越低越好</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>排名</th><th>模型</th><th class="numeric">验证 Brier</th><th class="numeric">相对均匀</th><th class="numeric">留出 Brier</th><th class="numeric">主区最高命中</th><th class="numeric">特区最高命中</th></tr></thead>
+              <tbody id="multi-model-body"></tbody>
+            </table>
+          </div>
+          <p class="multi-note" id="multi-note">—</p>
+        </article>
+        <article class="card research-ledger-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">SEPARATE EXECUTION LEDGERS</p>
+              <h3>滚动、守号与同预算随机</h3>
+              <p id="research-ledger-copy">三本账使用同一长期区间、相同注数和相同固定奖金口径。</p>
+            </div>
+            <span class="quiet-label">3注示例 · 1/3/5/10注均保留</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>账本</th><th class="numeric">成本</th><th class="numeric">中奖期</th>
+                  <th class="numeric">中奖注</th><th class="numeric">估算奖金</th>
+                  <th class="numeric">估算净额</th><th class="numeric">最大连续未中</th>
+                </tr>
+              </thead>
+              <tbody id="research-ledger-body"></tbody>
+            </table>
+          </div>
+          <div class="research-recent" id="research-recent12"></div>
+          <p class="fact-note" id="research-ledger-note">二等奖命中事实保留；浮动金额不唯一可推时不计入现金估算。</p>
+        </article>
+        <article class="card kl8-play-card" id="kl8-play-card" hidden>
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">PLAY 1—10 RECONCILIATION</p>
+              <h3>快乐8选一至选十历史对账</h3>
+              <p>正式主研究玩法仍为选十；本表只比较固定奖金下的历史命中率、返奖估算与净额。</p>
+            </div>
+            <span class="status-pill" id="kl8-best-play">分析中</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>玩法</th><th class="numeric">中奖期率</th><th class="numeric">平均命中</th><th class="numeric">成本</th><th class="numeric">估算奖金</th><th class="numeric">估算净额</th></tr></thead>
+              <tbody id="kl8-play-body"></tbody>
+            </table>
+          </div>
+        </article>
+        <article class="card blue-audit-card" id="blue-audit-card" hidden>
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">BLUE BALL SPECIALIST</p>
+              <h3>双色球蓝球专项</h3>
+              <p>500期长期背景、14期短期观察；正式单号概率始终为 1 / 16。</p>
+            </div>
+            <span class="status-pill">规则生成，非预测</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>模型</th><th class="numeric">Brier</th><th class="numeric">相对均匀</th><th>下一期研究参考蓝球</th></tr></thead>
+              <tbody id="blue-audit-body"></tbody>
+            </table>
+          </div>
+          <p class="fact-note" id="blue-audit-note">—</p>
+        </article>
+        <article class="card multi-history-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">RECOMMENDATION ARCHIVE</p>
+              <h3>最近十二期多注规则对比</h3>
+            </div>
+            <span class="quiet-label">步行前推历史重建 · 不等同赛前冻结</span>
+          </div>
+          <div class="snapshot-summary" id="multi-history-summary"></div>
+          <p class="fact-note">十二期只用于近期观察，样本不足以证明模型优劣；1/3/5/10注为同一主票包的前缀。奖金为固定口径估算：一等奖按500万元；二等奖保留中奖事实，但8亿元奖池不能在缺少销量和获奖注数时唯一换算成单注金额。</p>
+          <div class="table-wrap">
+            <table class="snapshot-compare-table">
+              <thead>
+                <tr>
+                  <th>期号</th><th>实际开奖</th>
+                  <th class="numeric">1注 / 2元</th>
+                  <th class="numeric">3注 / 6元</th>
+                  <th class="numeric">5注 / 10元</th>
+                  <th class="numeric">10注 / 20元</th>
+                </tr>
+              </thead>
+              <tbody id="multi-history-body"></tbody>
+            </table>
+          </div>
+        </article>
+        <article class="card multi-snapshot-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">LIVE SNAPSHOT LEDGER</p>
+              <h3>赛前冻结账本 · 多注结果</h3>
+            </div>
+            <span class="quiet-label">真实赛前冻结记录 · 与历史重建分开展示</span>
+          </div>
+          <div class="table-wrap">
+            <table class="snapshot-compare-table">
+              <thead>
+                <tr>
+                  <th>目标期</th><th>状态</th>
+                  <th class="numeric">1注</th><th class="numeric">3注</th>
+                  <th class="numeric">5注</th><th class="numeric">10注</th>
+                </tr>
+              </thead>
+              <tbody id="multi-snapshot-body"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="panel-backtest" data-panel="backtest" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">WALK-FORWARD HOLDOUT</p>
+            <h2>留出集回测</h2>
+            <p>最后 240 期完全留出，选模只看更早的数据。下方的每一点都来自该期开奖前的历史状态。</p>
+          </div>
+          <div class="holdout-badge">
+            <span>不参与选模</span>
+            <strong id="holdout-window">—</strong>
+          </div>
+        </div>
+        <div class="backtest-grid">
+          <article class="card chart-card large-chart-card">
+            <div class="chart-head">
+              <div>
+                <span class="muted-label">20 期滚动平均</span>
+                <strong>Brier 损失曲线</strong>
+              </div>
+              <div class="legend">
+                <span><i class="legend-line selected"></i>采用模型</span>
+                <span><i class="legend-line uniform"></i>均匀基线</span>
+              </div>
+            </div>
+            <div id="backtest-chart" class="chart-container"></div>
+          </article>
+          <article class="card metric-stack">
+            <div class="metric-block">
+              <span class="muted-label">留出 Brier</span>
+              <strong id="holdout-brier">—</strong>
+              <small>越低越好</small>
+            </div>
+            <hr>
+            <div class="metric-block">
+              <span class="muted-label">相对基线</span>
+              <strong id="holdout-gain">—</strong>
+              <small id="holdout-gain-copy">正值代表改善</small>
+            </div>
+            <hr>
+            <div class="metric-block">
+              <span class="muted-label">原始挑战者</span>
+              <strong id="challenger-name">—</strong>
+              <small id="challenger-gain">—</small>
+            </div>
+          </article>
+        </div>
+        <article class="card table-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">RECENT SETTLEMENT</p>
+              <h3>最近留出结算</h3>
+            </div>
+            <span class="quiet-label">Brier 按前区与后区联合平均</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>期号</th><th>日期</th><th class="numeric">采用模型</th><th class="numeric">均匀基线</th><th class="numeric">前区最高权重命中</th></tr>
+              </thead>
+              <tbody id="settlement-table-body"></tbody>
+            </table>
+          </div>
+        </article>
+        <article class="card research-audit-card" aria-labelledby="research-audit-title">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">ALL-GAME WALK-FORWARD AUDIT</p>
+              <h3 id="research-audit-title">全彩种长期滚动审计</h3>
+              <p>滚动、守号与同预算随机票包分开记账。十二期结果只作近期观察，不作为模型胜负结论。</p>
+            </div>
+            <span class="status-pill" id="research-audit-status">读取中</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>彩种</th><th class="numeric">回测期数</th>
+                  <th class="numeric">候选 Brier 改善</th><th class="numeric">95% CI</th>
+                  <th class="numeric">滚动 / 守号 / 随机净额</th><th>正式裁决</th>
+                </tr>
+              </thead>
+              <tbody id="research-audit-body">
+                <tr><td colspan="6">正在读取长期审计数据…</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fact-note" id="research-audit-note">规则生成，非预测。奖金为固定口径估算，不是实际派奖。</p>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="panel-cycles" data-panel="cycles" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">FIVE-DRAW CYCLE FORENSICS</p>
+            <h2>五期周期审计</h2>
+            <p>检验相隔 1—5 期的号码重现、五个一组的结构延续，以及最近五期热度在“延续”和“反转”之间是否存在稳定方向。</p>
+          </div>
+          <div class="holdout-badge negative-badge">
+            <span>号码身份规律</span>
+            <strong id="cycle-badge">检验中</strong>
+          </div>
+        </div>
+
+        <article class="card cycle-verdict-card">
+          <div>
+            <p class="section-kicker">CYCLE VERDICT</p>
+            <h3 id="cycle-verdict">—</h3>
+          </div>
+          <div class="cycle-separation">
+            <div><span>结构层</span><strong id="cycle-structure-label">—</strong><small>和值、大号占比</small></div>
+            <div><span>号码层</span><strong id="cycle-number-label">—</strong><small>具体号码身份</small></div>
+            <div><span>执行层</span><strong id="cycle-execution-label">—</strong><small>延续与反转均被检验</small></div>
+          </div>
+        </article>
+
+        <article class="card mtf-card">
+          <div class="mtf-head">
+            <div>
+              <p class="section-kicker">10-DRAW BACKGROUND × 5-DRAW SIGNAL</p>
+              <h3>长期背景与短期规律</h3>
+              <p>先以最近十期建立号码背景，再计算最近五期的短期加速度。α 控制背景权重，β 为正表示延续，为负表示反转。</p>
+            </div>
+            <span class="status-pill" id="mtf-status">分析中</span>
+          </div>
+          <div class="mtf-layout">
+            <div class="mtf-metrics">
+              <div><span>训练集最优方向</span><strong id="mtf-train">—</strong><small>在更早数据中拟合</small></div>
+              <div><span>验证集最优方向</span><strong id="mtf-validation">—</strong><small>不参与训练拟合</small></div>
+              <div><span>最终采用</span><strong id="mtf-selected">—</strong><small id="mtf-gate">—</small></div>
+            </div>
+            <div class="mtf-plane-wrap">
+              <div class="muted-label">α—β 参数落点</div>
+              <div id="mtf-plane" class="mtf-plane"></div>
+              <div class="plane-axis"><span>← 反转 β</span><strong>α</strong><span>延续 β →</span></div>
+            </div>
+          </div>
+          <p class="mtf-verdict" id="mtf-verdict">—</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>模型</th><th class="numeric">α 背景</th><th class="numeric">β 短周期</th><th class="numeric">验证改善</th><th class="numeric">独立留出改善</th></tr></thead>
+              <tbody id="mtf-table-body"></tbody>
+            </table>
+          </div>
+          <div class="mtf-tickets">
+            <div>
+              <span class="muted-label">训练参数外推</span>
+              <div class="ball-line" id="mtf-train-ticket"></div>
+            </div>
+            <div>
+              <span class="muted-label">验证参数外推</span>
+              <div class="ball-line" id="mtf-validation-ticket"></div>
+            </div>
+            <small>两组号码仅用于展示参数不稳定程度，不进入主模型权重。</small>
+          </div>
+        </article>
+
+        <div class="cycle-grid">
+          <article class="card cycle-lag-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">LAG OVERLAP</p>
+                <h3>五期相隔重现</h3>
+              </div>
+              <span class="quiet-label">Bonferroni 校正后</span>
+            </div>
+            <div class="cycle-lag-summary">
+              <div>
+                <span>前区 LAG 5</span>
+                <strong id="front-lag5-overlap">—</strong>
+                <small>理论重合 <span id="front-lag5-expected">—</span></small>
+                <em id="front-lag5-p">—</em>
+              </div>
+              <div>
+                <span>后区 LAG 5</span>
+                <strong id="back-lag5-overlap">—</strong>
+                <small>理论重合 <span id="back-lag5-expected">—</span></small>
+                <em id="back-lag5-p">—</em>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="compact-table">
+                <thead><tr><th>滞后</th><th class="numeric">前区重合</th><th class="numeric">校正 P</th><th class="numeric">后区重合</th><th class="numeric">校正 P</th></tr></thead>
+                <tbody id="cycle-lag-body"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card block-structure-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">BLOCK PERSISTENCE</p>
+                <h3>五期结构方向</h3>
+              </div>
+              <span class="quiet-label">延续 vs 反转</span>
+            </div>
+            <p class="block-note">把不重叠的五期开奖合并为一个周期，检验下一周期整体特征更可能延续还是反转。</p>
+            <div id="block-direction-list" class="block-direction-list"></div>
+            <div class="latest-cycle-profile">
+              <div>
+                <span class="muted-label">最近五期热号</span>
+                <strong>仅作当前结构切片</strong>
+                <div class="ball-line" id="cycle-front-extension"></div>
+                <div class="ball-line" id="cycle-back-extension"></div>
+              </div>
+              <small>具体号码热度未通过独立胜率检验，不应把这里当作可延续的选号信号。</small>
+            </div>
+          </article>
+        </div>
+
+        <article class="card alpha-card">
+          <div class="chart-head">
+            <div>
+              <span class="muted-label">CONTINUATION ↔ REVERSAL</span>
+              <strong>五期热度系数扫描</strong>
+            </div>
+            <div class="alpha-legend">
+              <span><i></i>反转 α&lt;0</span>
+              <span><i></i>均匀 α=0</span>
+              <span><i></i>延续 α&gt;0</span>
+            </div>
+          </div>
+          <div id="alpha-chart" class="chart-container alpha-chart"></div>
+          <div class="alpha-footer">
+            <div>
+              <span class="muted-label">滚动方向选择</span>
+              <strong id="cycle-switch-result">—</strong>
+              <small id="cycle-switch-detail">—</small>
+            </div>
+            <p>α 越向两侧，越激进地押注反转或延续；中间 0 表示不采用最近五期号码热度。Brier 越低越好。</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="panel-quant" data-panel="quant" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">QUANT ALLOCATION & RISK</p>
+            <h2>量化决策层</h2>
+            <p>把信号概率、固定预算、组合相关性和历史返奖率放在同一个框架内。量化首先回答“该不该下注”，其次才回答“如何分配固定娱乐预算”。</p>
+          </div>
+          <div class="holdout-badge negative-badge">
+            <span>策略仓位</span>
+            <strong>零仓位</strong>
+          </div>
+        </div>
+
+        <article class="card screening-card">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">CONDITIONAL EXCLUSION</p>
+              <h3>条件排除与分散票包</h3>
+              <p>先用滚动历史阈值筛除极端结构，再在剩余空间按固定种子生成低重叠单式。排除只约束候选覆盖，不改变单注理论概率。</p>
+            </div>
+            <span class="status-pill" id="screening-status">读取审计</span>
+          </div>
+          <div class="screening-grid">
+            <label>
+              <span>排除前区号码</span>
+              <input class="form-control" id="screening-excluded" placeholder="例如：01 05 12">
+            </label>
+            <label>
+              <span>注数</span>
+              <input class="form-control numeric" id="screening-count" type="number" min="1" max="100" value="5">
+            </label>
+            <label>
+              <span>随机种子</span>
+              <input class="form-control numeric" id="screening-seed" type="number" min="0" value="20261120">
+            </label>
+            <button class="primary-button" id="screening-generate" type="button">生成条件票包</button>
+          </div>
+          <div class="screening-metrics">
+            <div><span>2014年后事实保留率</span><strong id="screening-retention">—</strong></div>
+            <div><span>当前候选覆盖率</span><strong id="screening-coverage">—</strong></div>
+            <div><span>保留前区组合</span><strong id="screening-space">—</strong></div>
+            <div><span>规则数量</span><strong id="screening-rule-count">—</strong></div>
+          </div>
+          <p class="screening-rules" id="screening-rules">正在加载滚动筛选审计…</p>
+          <p class="form-error" id="screening-error" role="alert"></p>
+          <div class="screening-result" id="screening-result">
+            <p class="empty-state">尚未生成条件票包</p>
+          </div>
+        </article>
+
+        <div class="quant-summary-grid">
+          <article class="card quant-verdict-card">
+            <p class="section-kicker">CAPITAL ALLOCATION</p>
+            <div class="quant-verdict-row">
+              <div>
+                <span class="muted-label">负期望裁决</span>
+                <h3>负期望下，最优仓位为零</h3>
+              </div>
+              <span class="quant-zero">0.00%</span>
+            </div>
+            <p id="quant-risk-copy" class="quant-risk-copy">—</p>
+            <div class="risk-rule">
+              <span>仓位规则</span>
+              <strong id="quant-risk-rule">—</strong>
+            </div>
+          </article>
+          <article class="card payout-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">HISTORICAL PAYOUT</p>
+                <h3>返奖率审计</h3>
+              </div>
+              <span class="status-pill">最近 500 期</span>
+            </div>
+            <div class="quant-metric-grid">
+              <div><span>历史返奖率</span><strong id="quant-payout-ratio">—</strong></div>
+              <div><span>庄家优势</span><strong id="quant-house-edge">—</strong></div>
+              <div><span>20 元期望奖金</span><strong id="quant-expected-prize">—</strong></div>
+              <div><span>20 元期望净损</span><strong id="quant-expected-net">—</strong></div>
+            </div>
+          </article>
+        </div>
+
+        <article class="card budget-card">
+          <div class="budget-toolbar">
+            <div>
+              <p class="section-kicker">FIXED ENTERTAINMENT BUDGET</p>
+              <h3>固定预算组合覆盖</h3>
+              <p>覆盖优化让有限的注数尽量分散；只提高“至少命中一个奖级”的概率，不提高单注中奖概率或期望收益。</p>
+            </div>
+            <div class="budget-switch" aria-label="娱乐预算">
+              <button class="budget-button" type="button" data-budget="10">¥10</button>
+              <button class="budget-button is-active" type="button" data-budget="20">¥20</button>
+              <button class="budget-button" type="button" data-budget="50">¥50</button>
+            </div>
+          </div>
+          <div class="coverage-summary">
+            <div class="coverage-copy">
+              <span class="muted-label">当前方案</span>
+              <strong id="quant-budget-label">¥20 · 10 注</strong>
+              <small id="quant-expected-budget-net">—</small>
+            </div>
+            <div class="coverage-bars">
+              <div class="coverage-row">
+                <div><span>普通随机组合</span><strong id="quant-random-rate">—</strong></div>
+                <div class="coverage-track"><i id="quant-random-bar"></i></div>
+              </div>
+              <div class="coverage-row dominant">
+                <div><span>低重叠覆盖组合</span><strong id="quant-coverage-rate">—</strong></div>
+                <div class="coverage-track"><i id="quant-coverage-bar"></i></div>
+              </div>
+            </div>
+            <div class="coverage-lift">
+              <span>任意奖级覆盖提升</span>
+              <strong id="quant-coverage-lift">—</strong>
+              <small>统一抽样 50,000 次</small>
+            </div>
+          </div>
+          <div class="portfolio-heading">
+            <div>
+              <span class="muted-label">COVERAGE PORTFOLIO</span>
+              <strong>低重叠组合</strong>
+            </div>
+            <button class="text-button" id="copy-quant-portfolio" type="button">复制当前组合</button>
+          </div>
+          <div class="quant-portfolio" id="quant-portfolio"></div>
+        </article>
+
+        <article class="card jackpot-card">
+          <div class="budget-toolbar">
+            <div>
+              <p class="section-kicker">FIRST PRIZE COVERAGE</p>
+              <h3>一等奖覆盖模型</h3>
+              <p id="jackpot-target">—</p>
+            </div>
+            <div class="holdout-badge">
+              <span>覆盖固定预算</span>
+              <strong>3 注 / 期 · ¥6</strong>
+            </div>
+          </div>
+          <div class="jackpot-layout">
+            <div>
+              <span class="muted-label">下一期三注覆盖 · 规则生成，非预测</span>
+              <div id="jackpot-tickets" class="jackpot-tickets"></div>
+            </div>
+            <div class="jackpot-summary">
+              <div><span>一年累计成本</span><strong id="jackpot-year-cost">—</strong></div>
+              <div><span>一年中一等奖概率</span><strong id="jackpot-year-probability">—</strong></div>
+              <div><span>停止规则</span><strong>中一等奖或预算结束</strong></div>
+            </div>
+          </div>
+          <div class="jackpot-toolbar">
+            <div>
+              <strong>未来时间概率</strong>
+              <span>按每年约156期计算</span>
+            </div>
+            <div class="segmented-control small" aria-label="未来时间范围">
+              <button class="jackpot-year is-active" type="button" data-years="1">1年</button>
+              <button class="jackpot-year" type="button" data-years="3">3年</button>
+              <button class="jackpot-year" type="button" data-years="5">5年</button>
+              <button class="jackpot-year" type="button" data-years="10">10年</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>每期注数</th><th class="numeric">每期成本</th><th class="numeric">累计成本</th><th class="numeric">至少中一次一等奖</th><th class="numeric">约等于</th></tr></thead>
+              <tbody id="jackpot-table-body"></tbody>
+            </table>
+          </div>
+          <p class="jackpot-warning" id="jackpot-warning">—</p>
+        </article>
+
+        <article class="card scheme-audit-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">SURVIVORSHIP AUDIT</p>
+              <h3>复式投注成本审计</h3>
+              <p>中奖截图必须同时披露注数、成本和未中奖样本，避免把大额覆盖误认为分析方法有效。</p>
+            </div>
+            <div class="holdout-badge negative-badge">
+              <span>15+5 标准复式</span>
+              <strong id="scheme-case-cost">—</strong>
+            </div>
+          </div>
+          <p class="scheme-case-copy" id="scheme-case-copy">—</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>方案</th><th class="numeric">注数</th><th class="numeric">成本</th><th class="numeric">头奖概率</th><th class="numeric">任意奖概率</th><th class="numeric">期望净损</th></tr></thead>
+              <tbody id="scheme-audit-body"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card ticket-checker-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">TICKET OCR & VALIDATION</p>
+              <h3>彩票 OCR 与复式验奖</h3>
+              <p>上传票面截图，或直接粘贴号码。前后区用“+”分隔，每行一注；支持单式、复式及快乐8选一至选十复式。</p>
+            </div>
+            <span class="status-pill">可选 OCR</span>
+          </div>
+          <div class="ticket-checker-form">
+            <label>
+              <span>彩种</span>
+              <select class="form-select" id="ticket-game">
+                <option value="dlt">大乐透</option>
+                <option value="ssq">双色球</option>
+                <option value="pl3">排列3</option>
+                <option value="pl5">排列5</option>
+                <option value="kl8">快乐8</option>
+              </select>
+            </label>
+            <label>
+              <span>期号</span>
+              <input class="form-control" id="ticket-issue" inputmode="numeric" placeholder="例如 26131">
+            </label>
+            <label id="ticket-play-field" hidden>
+              <span>快乐8玩法</span>
+              <select class="form-select" id="ticket-play">
+                <option value="1">选一</option><option value="2">选二</option>
+                <option value="3">选三</option><option value="4">选四</option>
+                <option value="5">选五</option><option value="6">选六</option>
+                <option value="7">选七</option><option value="8">选八</option>
+                <option value="9">选九</option><option value="10" selected>选十</option>
+              </select>
+            </label>
+            <label>
+              <span>票面图片</span>
+              <input class="form-control" id="ticket-image" type="file" accept="image/*">
+            </label>
+            <label class="wide">
+              <span>号码文本</span>
+              <textarea class="form-control" id="ticket-text" rows="5" placeholder="01 02 03 04 05 + 06 07&#10;07 08 09 10 11 + 02 03"></textarea>
+            </label>
+          </div>
+          <div class="ticket-checker-actions">
+            <button class="primary-button" id="ticket-check-text" type="button">验文字号码</button>
+            <button class="btn" id="ticket-check-image" type="button">OCR 识别并验票</button>
+          </div>
+          <div class="ticket-result" id="ticket-result" aria-live="polite">
+            <p class="empty-state">尚未验票</p>
+          </div>
+        </article>
+
+        <article class="card quant-method-card">
+          <div>
+            <p class="section-kicker">QUANT PROTOCOL</p>
+            <h3>这里的“量化”如何定义</h3>
+          </div>
+          <div class="quant-method-grid">
+            <div><span>01</span><strong>Edge</strong><p>只有统计显著的正向概率优势才允许战术仓位。</p></div>
+            <div><span>02</span><strong>Kelly</strong><p>历史返奖率小于 1 时，Kelly 上限被截断为 0。</p></div>
+            <div><span>03</span><strong>Coverage</strong><p>固定注数下降低号码、后区对和整票重叠。</p></div>
+            <div><span>04</span><strong>Risk</strong><p>娱乐预算事先固定，不追损、不倍投、不因短期命中加仓。</p></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="panel-numbers" data-panel="numbers" hidden>
+        <div class="panel-heading numbers-heading">
+          <div>
+            <p class="section-kicker">NUMBER FORENSICS</p>
+            <h2>号码切片</h2>
+            <p>频率和遗漏是描述性证据，不是未来概率。切换指标以检查近期热度与回补幅度。</p>
+          </div>
+          <div class="segmented-control" aria-label="号码区域">
+            <button class="segment is-active" type="button" data-area="front">前区 35</button>
+            <button class="segment" type="button" data-area="back">后区 12</button>
+          </div>
+        </div>
+        <button class="secondary-button data-back-button" id="back-to-data" type="button">← 返回数据与口径</button>
+        <article class="card number-lab">
+          <div class="lab-toolbar">
+            <div class="segmented-control small" aria-label="号码指标">
+              <button class="metric-segment is-active" type="button" data-metric="count_100">近 100 期出现</button>
+              <button class="metric-segment" type="button" data-metric="omission">当前遗漏</button>
+              <button class="metric-segment" type="button" data-metric="count_all">历史累计</button>
+            </div>
+            <div class="metric-caption" id="number-caption">次数越深，近期出现越频繁</div>
+          </div>
+          <div class="number-grid detailed" id="number-grid" aria-live="polite"></div>
+          <div class="heat-legend">
+            <span>低</span><i class="heat-ramp"></i><span>高</span>
+          </div>
+        </article>
+        <article class="card recent-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">LAST 24</p>
+              <h3>最近开奖</h3>
+            </div>
+            <span class="quiet-label">号码已按升序排列</span>
+          </div>
+          <div id="recent-draw-list" class="recent-draw-list"></div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="panel-data" data-panel="data" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">DATA & METHOD</p>
+            <h2>数据与口径</h2>
+            <p>程序直接解析工作簿 XML，不依赖 Excel 或第三方数据接口。每次启动都会重新读取本地历史并执行完整回测。</p>
+          </div>
+          <button class="primary-button" id="refresh-page" type="button">重新载入分析</button>
+        </div>
+        <nav class="data-subnav" aria-label="数据子页面">
+          <button class="segment is-active" type="button" data-data-page="summary">数据与口径</button>
+          <button class="segment" type="button" data-data-page="numbers">号码事实</button>
+        </nav>
+        <div class="data-grid">
+          <article class="card audit-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">INTEGRITY CHECK</p>
+                <h3>数据审计</h3>
+              </div>
+              <span class="status-pill success">字段有效</span>
+            </div>
+            <dl class="audit-list">
+              <div><dt>源文件</dt><dd id="audit-file">—</dd></div>
+              <div><dt>记录数</dt><dd id="audit-count">—</dd></div>
+              <div><dt>时间范围</dt><dd id="audit-range">—</dd></div>
+              <div><dt>重复期号</dt><dd>0</dd></div>
+              <div><dt>号码越界</dt><dd>0</dd></div>
+              <div><dt>最新期号</dt><dd id="audit-latest">—</dd></div>
+            </dl>
+          </article>
+          <article class="card method-card">
+            <p class="section-kicker">MODEL PROTOCOL</p>
+            <h3>推演流程</h3>
+            <ol class="method-steps">
+              <li><span>01</span><div><strong>严格时间切片</strong><p>每期评分仅使用此前开奖，避免未来数据泄漏。</p></div></li>
+              <li><span>02</span><div><strong>并行假设检验</strong><p>比较频率、热号、衰减、遗漏与共现等 190 余个配置。</p></div></li>
+              <li><span>03</span><div><strong>Brier + 对数损失</strong><p>使用概率型评分，而不是只看偶然命中的号码数量。</p></div></li>
+              <li><span>04</span><div><strong>显著性与留出复核</strong><p>分块 Bootstrap 门槛通过后才允许替换均匀基线。</p></div></li>
+            </ol>
+          </article>
+        </div>
+        <article class="card probability-card">
+          <div>
+            <p class="section-kicker">THEORETICAL REFERENCE</p>
+            <h3>不可改变的底层概率</h3>
+          </div>
+          <div class="probability-grid">
+            <div><strong id="front-single-prob">—</strong><span>前区单号入选概率</span></div>
+            <div><strong id="back-single-prob">—</strong><span>后区单号入选概率</span></div>
+            <div><strong id="front-combinations">—</strong><span>前区可能组合</span></div>
+            <div><strong id="jackpot-odds">—</strong><span>单注一等奖概率</span></div>
+          </div>
+        </article>
+        <article class="card data-quality-card">
+          <div class="table-head">
+            <div>
+              <p class="section-kicker">FIVE-GAME DATA CONTRACT</p>
+              <h3>全彩种数据质量</h3>
+            </div>
+            <span class="quiet-label">范围、重复期号、时间顺序</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>彩种</th><th class="numeric">期数</th><th>时间范围</th><th class="numeric">重复期号</th><th class="numeric">无效记录</th><th>状态</th></tr></thead>
+              <tbody id="data-quality-body"><tr><td colspan="6">正在读取…</td></tr></tbody>
+            </table>
+          </div>
+          <p class="fact-note">历史重建记录来自当时可见数据；真实赛前快照在首次生成时冻结，并在开奖后只回填结果。</p>
+        </article>
+      </section>
+    </div>
+
+    <footer>
+      <span id="footer-timestamp">—</span>
+      <p id="footer-disclaimer">彩票开奖按规则独立随机。分析与组合仅供研究与娱乐。</p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./runtime-config.js?v=20261120-extra"></script>
+  <script src="./app.js?v=20261120-extra"></script>
+</body>
+</html>

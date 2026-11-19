@@ -1,0 +1,8096 @@
+{
+  "generated_at": "2026-11-20T02:15:01+08:00",
+  "source": {
+    "file": "大乐透自动更新(1).xlsm",
+    "draw_count": 2950,
+    "start_date": "2007-05-30",
+    "start_issue": "07001",
+    "latest_date": "2026-11-18",
+    "latest_issue": "26132",
+    "latest_front": [
+      2,
+      9,
+      16,
+      26,
+      35
+    ],
+    "latest_back": [
+      6,
+      11
+    ],
+    "next_issue": "26133",
+    "next_date": "2026-11-21",
+    "valid_ranges": true,
+    "duplicate_issues": 0
+  },
+  "baseline": {
+    "front_single": 0.14285714285714285,
+    "back_single": 0.16666666666666666,
+    "front_combinations": 324632,
+    "back_combinations": 66,
+    "jackpot_odds": 21425712
+  },
+  "validation": {
+    "development_start_issue": "16090",
+    "development_end_issue": "25042",
+    "development_draws": 1300,
+    "holdout_start_issue": "25043",
+    "holdout_end_issue": "26132",
+    "holdout_draws": 240,
+    "candidate_count": 192,
+    "bootstrap_rounds": 1600
+  },
+  "selection": {
+    "model": "均匀校准基线",
+    "model_description": "无信号假设；每期使用理论等概率。",
+    "status": "baseline_selected",
+    "passes_gate": false,
+    "reason": "没有候选模型能在开发集上稳定、显著地优于均匀基线，因此采用均匀校准模型。",
+    "raw_challenger": "自动混合 028",
+    "raw_challenger_description": "遗漏 1% · 50热 6% · 30衰减 1%",
+    "development_gain_bps": 0.13677369937133912,
+    "development_ci_low_bps": -0.06550546160982995,
+    "development_ci_high_bps": 0.3399654432392946,
+    "holdout_gain_bps": 0.0
+  },
+  "metrics": {
+    "selected": {
+      "dev_brier": 0.13066893424036277,
+      "dev_log_loss": 0.43033876357735695,
+      "holdout_brier": 0.13066893424036277,
+      "holdout_log_loss": 0.43033876357735695,
+      "holdout_front_brier": 0.12244897959183666,
+      "holdout_back_brier": 0.13888888888888887,
+      "holdout_gain_bps": 0.0
+    },
+    "uniform": {
+      "dev_brier": 0.13066893424036277,
+      "holdout_brier": 0.13066893424036277,
+      "holdout_log_loss": 0.43033876357735695
+    },
+    "challenger": {
+      "name": "自动混合 028",
+      "holdout_brier": 0.13070238149534877,
+      "holdout_gain_bps": -0.33447254985996544
+    }
+  },
+  "candidates": [
+    {
+      "name": "自动混合 028",
+      "description": "遗漏 1% · 50热 6% · 30衰减 1%",
+      "weights": {
+        "cold": 0.0129,
+        "hot50": 0.0608,
+        "rec30": 0.0063
+      },
+      "complexity": 5,
+      "dev_brier": 0.13065525687042565,
+      "dev_log_loss": 0.43028946395936407,
+      "dev_delta_bps": 0.13677369937126205,
+      "selected": false,
+      "rank": 1
+    },
+    {
+      "name": "自动混合 071",
+      "description": "遗漏 1% · 频率 3% · 50热 8%",
+      "weights": {
+        "cold": 0.0093,
+        "freq": 0.0327,
+        "hot50": 0.078
+      },
+      "complexity": 5,
+      "dev_brier": 0.13065606551442982,
+      "dev_log_loss": 0.43029217982794876,
+      "dev_delta_bps": 0.12868725932951852,
+      "selected": false,
+      "rank": 2
+    },
+    {
+      "name": "自动混合 113",
+      "description": "遗漏 1% · 50热 3% · 60衰减 4%",
+      "weights": {
+        "cold": 0.0079,
+        "hot50": 0.0345,
+        "rec60": 0.0376
+      },
+      "complexity": 5,
+      "dev_brier": 0.13065621564662333,
+      "dev_log_loss": 0.4302923182683781,
+      "dev_delta_bps": 0.12718593739441397,
+      "selected": false,
+      "rank": 3
+    },
+    {
+      "name": "自动混合 039",
+      "description": "遗漏 1% · 50热 3% · 60衰减 4%",
+      "weights": {
+        "cold": 0.0076,
+        "hot50": 0.0327,
+        "rec60": 0.0397
+      },
+      "complexity": 5,
+      "dev_brier": 0.1306563533279097,
+      "dev_log_loss": 0.4302927947937492,
+      "dev_delta_bps": 0.12580912453069582,
+      "selected": false,
+      "rank": 4
+    },
+    {
+      "name": "自动混合 025",
+      "description": "50热 6% · 120衰减 2%",
+      "weights": {
+        "hot50": 0.0588,
+        "rec120": 0.0212
+      },
+      "complexity": 4,
+      "dev_brier": 0.13065804666573905,
+      "dev_log_loss": 0.4302986294719644,
+      "dev_delta_bps": 0.10887574623724694,
+      "selected": false,
+      "rank": 5
+    },
+    {
+      "name": "自动混合 153",
+      "description": "50热 6% · 60衰减 2%",
+      "weights": {
+        "hot50": 0.058,
+        "rec60": 0.022
+      },
+      "complexity": 4,
+      "dev_brier": 0.13065815291156604,
+      "dev_log_loss": 0.43029906288402525,
+      "dev_delta_bps": 0.1078132879672733,
+      "selected": false,
+      "rank": 6
+    },
+    {
+      "name": "自动混合 178",
+      "description": "50热 6% · 共现 1% · 30衰减 1%",
+      "weights": {
+        "hot50": 0.0564,
+        "pair": 0.0121,
+        "rec30": 0.0115
+      },
+      "complexity": 5,
+      "dev_brier": 0.13065829619299105,
+      "dev_log_loss": 0.43029955843329243,
+      "dev_delta_bps": 0.10638047371724912,
+      "selected": false,
+      "rank": 7
+    },
+    {
+      "name": "自动混合 121",
+      "description": "频率 1% · 50热 5%",
+      "weights": {
+        "freq": 0.012,
+        "hot50": 0.048
+      },
+      "complexity": 4,
+      "dev_brier": 0.13065914859081057,
+      "dev_log_loss": 0.4303025041189454,
+      "dev_delta_bps": 0.09785649552201958,
+      "selected": false,
+      "rank": 8
+    },
+    {
+      "name": "自动混合 049",
+      "description": "50热 6% · 共现 1% · 60衰减 6%",
+      "weights": {
+        "hot50": 0.0579,
+        "pair": 0.0054,
+        "rec60": 0.0567
+      },
+      "complexity": 5,
+      "dev_brier": 0.13065953180993395,
+      "dev_log_loss": 0.430304583372976,
+      "dev_delta_bps": 0.09402430428823161,
+      "selected": false,
+      "rank": 9
+    },
+    {
+      "name": "自动混合 063",
+      "description": "50热 4% · 共现 2% · 120衰减 4% · 60衰减 5%",
+      "weights": {
+        "hot50": 0.0363,
+        "pair": 0.025,
+        "rec120": 0.038,
+        "rec60": 0.0507
+      },
+      "complexity": 6,
+      "dev_brier": 0.13065960297706225,
+      "dev_log_loss": 0.43030476828837944,
+      "dev_delta_bps": 0.09331263300521586,
+      "selected": false,
+      "rank": 10
+    },
+    {
+      "name": "自动混合 138",
+      "description": "50热 2% · 共现 2% · 120衰减 7%",
+      "weights": {
+        "hot50": 0.022,
+        "pair": 0.0235,
+        "rec120": 0.0744
+      },
+      "complexity": 5,
+      "dev_brier": 0.13066032092538812,
+      "dev_log_loss": 0.4303070540031037,
+      "dev_delta_bps": 0.08613314974648123,
+      "selected": false,
+      "rank": 11
+    },
+    {
+      "name": "自动混合 020",
+      "description": "频率 5% · 50热 4% · 120衰减 1% · 30衰减 1%",
+      "weights": {
+        "freq": 0.0545,
+        "hot50": 0.0446,
+        "rec120": 0.0065,
+        "rec30": 0.0144
+      },
+      "complexity": 6,
+      "dev_brier": 0.13066062995294056,
+      "dev_log_loss": 0.4303083828403731,
+      "dev_delta_bps": 0.08304287422211676,
+      "selected": false,
+      "rank": 12
+    },
+    {
+      "name": "自动混合 179",
+      "description": "遗漏 2% · 30衰减 13% · 60衰减 3%",
+      "weights": {
+        "cold": 0.0187,
+        "rec30": 0.1287,
+        "rec60": 0.0326
+      },
+      "complexity": 5,
+      "dev_brier": 0.13066077172774582,
+      "dev_log_loss": 0.4303114653288975,
+      "dev_delta_bps": 0.08162512616954887,
+      "selected": false,
+      "rank": 13
+    },
+    {
+      "name": "自动混合 176",
+      "description": "频率 3% · 50热 7% · 30衰减 2%",
+      "weights": {
+        "freq": 0.0285,
+        "hot50": 0.0743,
+        "rec30": 0.0172
+      },
+      "complexity": 5,
+      "dev_brier": 0.13066092386660172,
+      "dev_log_loss": 0.4303097740300976,
+      "dev_delta_bps": 0.08010373761052625,
+      "selected": false,
+      "rank": 14
+    },
+    {
+      "name": "自动混合 175",
+      "description": "频率 0% · 50热 1% · 120衰减 4% · 60衰减 2%",
+      "weights": {
+        "freq": 0.0036,
+        "hot50": 0.0124,
+        "rec120": 0.0413,
+        "rec60": 0.0228
+      },
+      "complexity": 6,
+      "dev_brier": 0.13066099328851372,
+      "dev_log_loss": 0.4303094035916547,
+      "dev_delta_bps": 0.07940951849055855,
+      "selected": false,
+      "rank": 15
+    },
+    {
+      "name": "自动混合 042",
+      "description": "30衰减 5% · 60衰减 3%",
+      "weights": {
+        "rec30": 0.0477,
+        "rec60": 0.0323
+      },
+      "complexity": 4,
+      "dev_brier": 0.130661007043321,
+      "dev_log_loss": 0.4303096921228139,
+      "dev_delta_bps": 0.07927197041762701,
+      "selected": false,
+      "rank": 16
+    },
+    {
+      "name": "自动混合 061",
+      "description": "30衰减 1% · 60衰减 7%",
+      "weights": {
+        "rec30": 0.0087,
+        "rec60": 0.0713
+      },
+      "complexity": 4,
+      "dev_brier": 0.13066103150041872,
+      "dev_log_loss": 0.43030962924512667,
+      "dev_delta_bps": 0.07902739944054549,
+      "selected": false,
+      "rank": 17
+    },
+    {
+      "name": "自动混合 083",
+      "description": "频率 7% · 50热 5% · 30衰减 1%",
+      "weights": {
+        "freq": 0.0654,
+        "hot50": 0.0488,
+        "rec30": 0.0058
+      },
+      "complexity": 5,
+      "dev_brier": 0.13066106610270736,
+      "dev_log_loss": 0.43030999494274946,
+      "dev_delta_bps": 0.07868137655409058,
+      "selected": false,
+      "rank": 18
+    },
+    {
+      "name": "自动混合 105",
+      "description": "50热 8% · 60衰减 4%",
+      "weights": {
+        "hot50": 0.0789,
+        "rec60": 0.0411
+      },
+      "complexity": 4,
+      "dev_brier": 0.13066133803381114,
+      "dev_log_loss": 0.43031154216932604,
+      "dev_delta_bps": 0.07596206551635509,
+      "selected": false,
+      "rank": 19
+    },
+    {
+      "name": "自动混合 015",
+      "description": "遗漏 0% · 60衰减 6%",
+      "weights": {
+        "cold": 0.0032,
+        "rec60": 0.0568
+      },
+      "complexity": 4,
+      "dev_brier": 0.13066139112131755,
+      "dev_log_loss": 0.43031104120641017,
+      "dev_delta_bps": 0.07543119045216873,
+      "selected": false,
+      "rank": 20
+    },
+    {
+      "name": "自动混合 055",
+      "description": "120衰减 0% · 30衰减 2% · 60衰减 9%",
+      "weights": {
+        "rec120": 0.0043,
+        "rec30": 0.0212,
+        "rec60": 0.0946
+      },
+      "complexity": 5,
+      "dev_brier": 0.130661432157897,
+      "dev_log_loss": 0.4303115697335387,
+      "dev_delta_bps": 0.07502082465776772,
+      "selected": false,
+      "rank": 21
+    },
+    {
+      "name": "自动混合 122",
+      "description": "50热 10% · 30衰减 0%",
+      "weights": {
+        "hot50": 0.0978,
+        "rec30": 0.0022
+      },
+      "complexity": 4,
+      "dev_brier": 0.13066157788891442,
+      "dev_log_loss": 0.43031238453543313,
+      "dev_delta_bps": 0.07356351448356557,
+      "selected": false,
+      "rank": 22
+    },
+    {
+      "name": "自动混合 050",
+      "description": "50热 1% · 120衰减 7%",
+      "weights": {
+        "hot50": 0.0113,
+        "rec120": 0.0687
+      },
+      "complexity": 4,
+      "dev_brier": 0.13066164762372073,
+      "dev_log_loss": 0.4303118260134368,
+      "dev_delta_bps": 0.07286616642038224,
+      "selected": false,
+      "rank": 23
+    },
+    {
+      "name": "自动混合 155",
+      "description": "120衰减 1% · 30衰减 5%",
+      "weights": {
+        "rec120": 0.0106,
+        "rec30": 0.0494
+      },
+      "complexity": 4,
+      "dev_brier": 0.13066167420173963,
+      "dev_log_loss": 0.43031200659948077,
+      "dev_delta_bps": 0.07260038623141396,
+      "selected": false,
+      "rank": 24
+    }
+  ],
+  "recommendations": [
+    {
+      "label": "一等奖覆盖 1/3",
+      "front": [
+        5,
+        6,
+        9,
+        13,
+        32
+      ],
+      "back": [
+        5,
+        8
+      ],
+      "note": "固定三注、低重叠覆盖；不代表预测优势，命中一等奖后停止。"
+    },
+    {
+      "label": "一等奖覆盖 2/3",
+      "front": [
+        11,
+        15,
+        21,
+        22,
+        28
+      ],
+      "back": [
+        11,
+        12
+      ],
+      "note": "固定三注、低重叠覆盖；不代表预测优势，命中一等奖后停止。"
+    },
+    {
+      "label": "一等奖覆盖 3/3",
+      "front": [
+        1,
+        4,
+        19,
+        26,
+        31
+      ],
+      "back": [
+        6,
+        9
+      ],
+      "note": "固定三注、低重叠覆盖；不代表预测优势，命中一等奖后停止。"
+    }
+  ],
+  "number_stats": {
+    "front": [
+      {
+        "number": 1,
+        "count_all": 433,
+        "count_100": 12,
+        "omission": 1
+      },
+      {
+        "number": 2,
+        "count_all": 425,
+        "count_100": 15,
+        "omission": 2
+      },
+      {
+        "number": 3,
+        "count_all": 436,
+        "count_100": 17,
+        "omission": 1
+      },
+      {
+        "number": 4,
+        "count_all": 385,
+        "count_100": 11,
+        "omission": 1
+      },
+      {
+        "number": 5,
+        "count_all": 433,
+        "count_100": 11,
+        "omission": 1
+      },
+      {
+        "number": 6,
+        "count_all": 417,
+        "count_100": 17,
+        "omission": 1
+      },
+      {
+        "number": 7,
+        "count_all": 435,
+        "count_100": 14,
+        "omission": 1
+      },
+      {
+        "number": 8,
+        "count_all": 394,
+        "count_100": 10,
+        "omission": 1
+      },
+      {
+        "number": 9,
+        "count_all": 400,
+        "count_100": 13,
+        "omission": 1
+      },
+      {
+        "number": 10,
+        "count_all": 412,
+        "count_100": 18,
+        "omission": 1
+      },
+      {
+        "number": 11,
+        "count_all": 429,
+        "count_100": 15,
+        "omission": 3
+      },
+      {
+        "number": 12,
+        "count_all": 399,
+        "count_100": 19,
+        "omission": 1
+      },
+      {
+        "number": 13,
+        "count_all": 393,
+        "count_100": 18,
+        "omission": 1
+      },
+      {
+        "number": 14,
+        "count_all": 402,
+        "count_100": 20,
+        "omission": 1
+      },
+      {
+        "number": 15,
+        "count_all": 383,
+        "count_100": 14,
+        "omission": 1
+      },
+      {
+        "number": 16,
+        "count_all": 359,
+        "count_100": 11,
+        "omission": 1
+      },
+      {
+        "number": 17,
+        "count_all": 391,
+        "count_100": 14,
+        "omission": 1
+      },
+      {
+        "number": 18,
+        "count_all": 404,
+        "count_100": 16,
+        "omission": 2
+      },
+      {
+        "number": 19,
+        "count_all": 430,
+        "count_100": 14,
+        "omission": 2
+      },
+      {
+        "number": 20,
+        "count_all": 415,
+        "count_100": 16,
+        "omission": 1
+      },
+      {
+        "number": 21,
+        "count_all": 397,
+        "count_100": 16,
+        "omission": 1
+      },
+      {
+        "number": 22,
+        "count_all": 460,
+        "count_100": 15,
+        "omission": 1
+      },
+      {
+        "number": 23,
+        "count_all": 406,
+        "count_100": 10,
+        "omission": 1
+      },
+      {
+        "number": 24,
+        "count_all": 375,
+        "count_100": 14,
+        "omission": 1
+      },
+      {
+        "number": 25,
+        "count_all": 420,
+        "count_100": 16,
+        "omission": 1
+      },
+      {
+        "number": 26,
+        "count_all": 413,
+        "count_100": 22,
+        "omission": 1
+      },
+      {
+        "number": 27,
+        "count_all": 410,
+        "count_100": 16,
+        "omission": 1
+      },
+      {
+        "number": 28,
+        "count_all": 403,
+        "count_100": 12,
+        "omission": 1
+      },
+      {
+        "number": 29,
+        "count_all": 506,
+        "count_100": 15,
+        "omission": 3
+      },
+      {
+        "number": 30,
+        "count_all": 467,
+        "count_100": 8,
+        "omission": 1
+      },
+      {
+        "number": 31,
+        "count_all": 426,
+        "count_100": 7,
+        "omission": 1
+      },
+      {
+        "number": 32,
+        "count_all": 470,
+        "count_100": 13,
+        "omission": 1
+      },
+      {
+        "number": 33,
+        "count_all": 489,
+        "count_100": 17,
+        "omission": 1
+      },
+      {
+        "number": 34,
+        "count_all": 448,
+        "count_100": 12,
+        "omission": 1
+      },
+      {
+        "number": 35,
+        "count_all": 485,
+        "count_100": 12,
+        "omission": 1
+      }
+    ],
+    "back": [
+      {
+        "number": 1,
+        "count_all": 470,
+        "count_100": 15,
+        "omission": 1
+      },
+      {
+        "number": 2,
+        "count_all": 494,
+        "count_100": 19,
+        "omission": 1
+      },
+      {
+        "number": 3,
+        "count_all": 473,
+        "count_100": 9,
+        "omission": 1
+      },
+      {
+        "number": 4,
+        "count_all": 478,
+        "count_100": 20,
+        "omission": 2
+      },
+      {
+        "number": 5,
+        "count_all": 511,
+        "count_100": 12,
+        "omission": 1
+      },
+      {
+        "number": 6,
+        "count_all": 475,
+        "count_100": 16,
+        "omission": 1
+      },
+      {
+        "number": 7,
+        "count_all": 527,
+        "count_100": 21,
+        "omission": 2
+      },
+      {
+        "number": 8,
+        "count_all": 462,
+        "count_100": 18,
+        "omission": 1
+      },
+      {
+        "number": 9,
+        "count_all": 493,
+        "count_100": 20,
+        "omission": 1
+      },
+      {
+        "number": 10,
+        "count_all": 524,
+        "count_100": 15,
+        "omission": 1
+      },
+      {
+        "number": 11,
+        "count_all": 487,
+        "count_100": 16,
+        "omission": 1
+      },
+      {
+        "number": 12,
+        "count_all": 506,
+        "count_100": 19,
+        "omission": 1
+      }
+    ]
+  },
+  "probability_reference": {
+    "front": [
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285
+    ],
+    "back": [
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666
+    ]
+  },
+  "holdout_series": [
+    {
+      "index": 1,
+      "issue": "25043",
+      "date": "2025-04-21",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 2,
+      "issue": "25044",
+      "date": "2025-04-23",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 3,
+      "issue": "25045",
+      "date": "2025-04-26",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 4,
+      "issue": "25046",
+      "date": "2025-04-28",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 5,
+      "issue": "25047",
+      "date": "2025-04-30",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 6,
+      "issue": "25048",
+      "date": "2025-05-03",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 7,
+      "issue": "25049",
+      "date": "2025-05-05",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 8,
+      "issue": "25050",
+      "date": "2025-05-07",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 9,
+      "issue": "25051",
+      "date": "2025-05-10",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 2
+    },
+    {
+      "index": 10,
+      "issue": "25052",
+      "date": "2025-05-12",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 11,
+      "issue": "25053",
+      "date": "2025-05-14",
+      "selected_brier": 0.13066893424036283,
+      "uniform_brier": 0.13066893424036283,
+      "top_hits": 0
+    },
+    {
+      "index": 12,
+      "issue": "25054",
+      "date": "2025-05-17",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 13,
+      "issue": "25055",
+      "date": "2025-05-19",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 14,
+      "issue": "25056",
+      "date": "2025-05-21",
+      "selected_brier": 0.13066893424036283,
+      "uniform_brier": 0.13066893424036283,
+      "top_hits": 0
+    },
+    {
+      "index": 15,
+      "issue": "25057",
+      "date": "2025-05-24",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 16,
+      "issue": "25058",
+      "date": "2025-05-26",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 17,
+      "issue": "25059",
+      "date": "2025-05-28",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 1
+    },
+    {
+      "index": 18,
+      "issue": "25060",
+      "date": "2025-05-31",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 19,
+      "issue": "25061",
+      "date": "2025-06-02",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 20,
+      "issue": "25062",
+      "date": "2025-06-04",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 21,
+      "issue": "25063",
+      "date": "2025-06-07",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 22,
+      "issue": "25064",
+      "date": "2025-06-09",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 23,
+      "issue": "25065",
+      "date": "2025-06-11",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 24,
+      "issue": "25066",
+      "date": "2025-06-14",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 25,
+      "issue": "25067",
+      "date": "2025-06-16",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 26,
+      "issue": "25068",
+      "date": "2025-06-18",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 2
+    },
+    {
+      "index": 27,
+      "issue": "25069",
+      "date": "2025-06-21",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 28,
+      "issue": "25070",
+      "date": "2025-06-23",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 29,
+      "issue": "25071",
+      "date": "2025-06-25",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 30,
+      "issue": "25072",
+      "date": "2025-06-28",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 31,
+      "issue": "25073",
+      "date": "2025-06-30",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 32,
+      "issue": "25074",
+      "date": "2025-07-02",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 33,
+      "issue": "25075",
+      "date": "2025-07-05",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 34,
+      "issue": "25076",
+      "date": "2025-07-07",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 35,
+      "issue": "25077",
+      "date": "2025-07-09",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 36,
+      "issue": "25078",
+      "date": "2025-07-12",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 37,
+      "issue": "25079",
+      "date": "2025-07-14",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 38,
+      "issue": "25080",
+      "date": "2025-07-16",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 39,
+      "issue": "25081",
+      "date": "2025-07-19",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 2
+    },
+    {
+      "index": 40,
+      "issue": "25082",
+      "date": "2025-07-21",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 3
+    },
+    {
+      "index": 41,
+      "issue": "25083",
+      "date": "2025-07-23",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 42,
+      "issue": "25084",
+      "date": "2025-07-26",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 43,
+      "issue": "25085",
+      "date": "2025-07-28",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 44,
+      "issue": "25086",
+      "date": "2025-07-30",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 45,
+      "issue": "25087",
+      "date": "2025-08-02",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 46,
+      "issue": "25088",
+      "date": "2025-08-04",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 47,
+      "issue": "25089",
+      "date": "2025-08-06",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 48,
+      "issue": "25090",
+      "date": "2025-08-09",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 49,
+      "issue": "25091",
+      "date": "2025-08-11",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 50,
+      "issue": "25092",
+      "date": "2025-08-13",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 51,
+      "issue": "25093",
+      "date": "2025-08-16",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 1
+    },
+    {
+      "index": 52,
+      "issue": "25094",
+      "date": "2025-08-18",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 53,
+      "issue": "25095",
+      "date": "2025-08-20",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 54,
+      "issue": "25096",
+      "date": "2025-08-23",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 55,
+      "issue": "25097",
+      "date": "2025-08-25",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 56,
+      "issue": "25098",
+      "date": "2025-08-27",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 57,
+      "issue": "25099",
+      "date": "2025-08-30",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 58,
+      "issue": "25100",
+      "date": "2025-09-01",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 59,
+      "issue": "25101",
+      "date": "2025-09-03",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 60,
+      "issue": "25102",
+      "date": "2025-09-06",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 61,
+      "issue": "25103",
+      "date": "2025-09-08",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 62,
+      "issue": "25104",
+      "date": "2025-09-10",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 63,
+      "issue": "25105",
+      "date": "2025-09-13",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 64,
+      "issue": "25106",
+      "date": "2025-09-15",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 65,
+      "issue": "25107",
+      "date": "2025-09-17",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 66,
+      "issue": "25108",
+      "date": "2025-09-20",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 67,
+      "issue": "25109",
+      "date": "2025-09-22",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 68,
+      "issue": "25110",
+      "date": "2025-09-24",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 69,
+      "issue": "25111",
+      "date": "2025-09-27",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 70,
+      "issue": "25112",
+      "date": "2025-09-29",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 2
+    },
+    {
+      "index": 71,
+      "issue": "25113",
+      "date": "2025-10-06",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 72,
+      "issue": "25114",
+      "date": "2025-10-08",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 1
+    },
+    {
+      "index": 73,
+      "issue": "25115",
+      "date": "2025-10-11",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 74,
+      "issue": "25116",
+      "date": "2025-10-13",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 75,
+      "issue": "25117",
+      "date": "2025-10-15",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 76,
+      "issue": "25118",
+      "date": "2025-10-18",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 1
+    },
+    {
+      "index": 77,
+      "issue": "25119",
+      "date": "2025-10-20",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 78,
+      "issue": "25120",
+      "date": "2025-10-22",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 79,
+      "issue": "25121",
+      "date": "2025-10-25",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 2
+    },
+    {
+      "index": 80,
+      "issue": "25122",
+      "date": "2025-10-27",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 2
+    },
+    {
+      "index": 81,
+      "issue": "25123",
+      "date": "2025-10-29",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 82,
+      "issue": "25124",
+      "date": "2025-11-01",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 83,
+      "issue": "25125",
+      "date": "2025-11-03",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 84,
+      "issue": "25126",
+      "date": "2025-11-05",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 85,
+      "issue": "25127",
+      "date": "2025-11-08",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 2
+    },
+    {
+      "index": 86,
+      "issue": "25128",
+      "date": "2025-11-10",
+      "selected_brier": 0.13066893424036283,
+      "uniform_brier": 0.13066893424036283,
+      "top_hits": 1
+    },
+    {
+      "index": 87,
+      "issue": "25129",
+      "date": "2025-11-12",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 88,
+      "issue": "25130",
+      "date": "2025-11-15",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 89,
+      "issue": "25131",
+      "date": "2025-11-17",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 90,
+      "issue": "25132",
+      "date": "2025-11-19",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 91,
+      "issue": "25133",
+      "date": "2025-11-22",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 92,
+      "issue": "25134",
+      "date": "2025-11-24",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 93,
+      "issue": "25135",
+      "date": "2025-11-26",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 94,
+      "issue": "25136",
+      "date": "2025-11-29",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 95,
+      "issue": "25137",
+      "date": "2025-12-01",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 96,
+      "issue": "25138",
+      "date": "2025-12-03",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 2
+    },
+    {
+      "index": 97,
+      "issue": "25139",
+      "date": "2025-12-06",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 98,
+      "issue": "25140",
+      "date": "2025-12-08",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 99,
+      "issue": "25141",
+      "date": "2025-12-10",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 100,
+      "issue": "25142",
+      "date": "2025-12-13",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 101,
+      "issue": "25143",
+      "date": "2025-12-15",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 2
+    },
+    {
+      "index": 102,
+      "issue": "25144",
+      "date": "2025-12-17",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 103,
+      "issue": "25145",
+      "date": "2025-12-20",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 104,
+      "issue": "25146",
+      "date": "2025-12-22",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 105,
+      "issue": "25147",
+      "date": "2025-12-24",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 106,
+      "issue": "25148",
+      "date": "2025-12-27",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 2
+    },
+    {
+      "index": 107,
+      "issue": "25149",
+      "date": "2025-12-29",
+      "selected_brier": 0.13066893424036283,
+      "uniform_brier": 0.13066893424036283,
+      "top_hits": 0
+    },
+    {
+      "index": 108,
+      "issue": "25150",
+      "date": "2025-12-31",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 109,
+      "issue": "26001",
+      "date": "2026-01-03",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 110,
+      "issue": "26002",
+      "date": "2026-01-05",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 111,
+      "issue": "26003",
+      "date": "2026-01-07",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 112,
+      "issue": "26004",
+      "date": "2026-01-10",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 113,
+      "issue": "26005",
+      "date": "2026-01-12",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 2
+    },
+    {
+      "index": 114,
+      "issue": "26006",
+      "date": "2026-01-14",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 115,
+      "issue": "26007",
+      "date": "2026-01-17",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 2
+    },
+    {
+      "index": 116,
+      "issue": "26008",
+      "date": "2026-01-19",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 117,
+      "issue": "26009",
+      "date": "2026-01-21",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 118,
+      "issue": "26010",
+      "date": "2026-01-24",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 119,
+      "issue": "26011",
+      "date": "2026-01-26",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 120,
+      "issue": "26012",
+      "date": "2026-01-28",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 121,
+      "issue": "26013",
+      "date": "2026-01-31",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 2
+    },
+    {
+      "index": 122,
+      "issue": "26014",
+      "date": "2026-02-02",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 123,
+      "issue": "26015",
+      "date": "2026-02-04",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 2
+    },
+    {
+      "index": 124,
+      "issue": "26016",
+      "date": "2026-02-07",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 125,
+      "issue": "26017",
+      "date": "2026-02-09",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 2
+    },
+    {
+      "index": 126,
+      "issue": "26018",
+      "date": "2026-02-11",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 127,
+      "issue": "26019",
+      "date": "2026-02-25",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 128,
+      "issue": "26020",
+      "date": "2026-02-28",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 129,
+      "issue": "26021",
+      "date": "2026-03-02",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 130,
+      "issue": "26022",
+      "date": "2026-03-04",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 1
+    },
+    {
+      "index": 131,
+      "issue": "26023",
+      "date": "2026-03-07",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 132,
+      "issue": "26024",
+      "date": "2026-03-09",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 2
+    },
+    {
+      "index": 133,
+      "issue": "26025",
+      "date": "2026-03-11",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 134,
+      "issue": "26026",
+      "date": "2026-03-14",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 135,
+      "issue": "26027",
+      "date": "2026-03-16",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 136,
+      "issue": "26028",
+      "date": "2026-03-18",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 137,
+      "issue": "26029",
+      "date": "2026-03-21",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 138,
+      "issue": "26030",
+      "date": "2026-03-23",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 139,
+      "issue": "26031",
+      "date": "2026-03-25",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 140,
+      "issue": "26032",
+      "date": "2026-03-28",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 2
+    },
+    {
+      "index": 141,
+      "issue": "26033",
+      "date": "2026-03-30",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 142,
+      "issue": "26034",
+      "date": "2026-04-01",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 143,
+      "issue": "26035",
+      "date": "2026-04-04",
+      "selected_brier": 0.13066893424036283,
+      "uniform_brier": 0.13066893424036283,
+      "top_hits": 1
+    },
+    {
+      "index": 144,
+      "issue": "26036",
+      "date": "2026-04-06",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 145,
+      "issue": "26037",
+      "date": "2026-04-08",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 146,
+      "issue": "26038",
+      "date": "2026-04-11",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 147,
+      "issue": "26039",
+      "date": "2026-04-13",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 148,
+      "issue": "26040",
+      "date": "2026-04-15",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 149,
+      "issue": "26041",
+      "date": "2026-04-18",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 150,
+      "issue": "26042",
+      "date": "2026-04-20",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 151,
+      "issue": "26043",
+      "date": "2026-04-22",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 152,
+      "issue": "26044",
+      "date": "2026-04-25",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 153,
+      "issue": "26045",
+      "date": "2026-04-27",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 154,
+      "issue": "26046",
+      "date": "2026-04-29",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 155,
+      "issue": "26047",
+      "date": "2026-05-02",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 156,
+      "issue": "26048",
+      "date": "2026-05-04",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 157,
+      "issue": "26049",
+      "date": "2026-05-06",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 158,
+      "issue": "26050",
+      "date": "2026-05-09",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 159,
+      "issue": "26051",
+      "date": "2026-05-11",
+      "selected_brier": 0.13066893424036283,
+      "uniform_brier": 0.13066893424036283,
+      "top_hits": 0
+    },
+    {
+      "index": 160,
+      "issue": "26052",
+      "date": "2026-05-13",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 2
+    },
+    {
+      "index": 161,
+      "issue": "26053",
+      "date": "2026-05-16",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 162,
+      "issue": "26054",
+      "date": "2026-05-18",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 163,
+      "issue": "26055",
+      "date": "2026-05-20",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 164,
+      "issue": "26056",
+      "date": "2026-05-23",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 165,
+      "issue": "26057",
+      "date": "2026-05-25",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 166,
+      "issue": "26058",
+      "date": "2026-05-27",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 167,
+      "issue": "26059",
+      "date": "2026-05-30",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 168,
+      "issue": "26060",
+      "date": "2026-06-01",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 169,
+      "issue": "26061",
+      "date": "2026-06-03",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 170,
+      "issue": "26062",
+      "date": "2026-06-06",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 171,
+      "issue": "26063",
+      "date": "2026-06-08",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 172,
+      "issue": "26064",
+      "date": "2026-06-10",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 173,
+      "issue": "26065",
+      "date": "2026-06-13",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 174,
+      "issue": "26066",
+      "date": "2026-06-15",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 175,
+      "issue": "26067",
+      "date": "2026-06-17",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 176,
+      "issue": "26068",
+      "date": "2026-06-20",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 177,
+      "issue": "26069",
+      "date": "2026-06-22",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 178,
+      "issue": "26070",
+      "date": "2026-06-24",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 2
+    },
+    {
+      "index": 179,
+      "issue": "26071",
+      "date": "2026-06-27",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 180,
+      "issue": "26072",
+      "date": "2026-06-29",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 181,
+      "issue": "26073",
+      "date": "2026-07-01",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 182,
+      "issue": "26074",
+      "date": "2026-07-04",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 2
+    },
+    {
+      "index": 183,
+      "issue": "26075",
+      "date": "2026-07-06",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 184,
+      "issue": "26076",
+      "date": "2026-07-08",
+      "selected_brier": 0.13066893424036283,
+      "uniform_brier": 0.13066893424036283,
+      "top_hits": 0
+    },
+    {
+      "index": 185,
+      "issue": "26077",
+      "date": "2026-07-11",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 186,
+      "issue": "26078",
+      "date": "2026-07-13",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 187,
+      "issue": "26079",
+      "date": "2026-07-15",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 188,
+      "issue": "26080",
+      "date": "2026-07-18",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 189,
+      "issue": "26081",
+      "date": "2026-07-20",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 190,
+      "issue": "26082",
+      "date": "2026-07-22",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 191,
+      "issue": "26083",
+      "date": "2026-07-25",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 192,
+      "issue": "26084",
+      "date": "2026-07-27",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 193,
+      "issue": "26085",
+      "date": "2026-07-29",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 194,
+      "issue": "26086",
+      "date": "2026-08-01",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 195,
+      "issue": "26087",
+      "date": "2026-08-03",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 196,
+      "issue": "26088",
+      "date": "2026-08-05",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 197,
+      "issue": "26089",
+      "date": "2026-08-08",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 198,
+      "issue": "26090",
+      "date": "2026-08-10",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 199,
+      "issue": "26091",
+      "date": "2026-08-12",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 2
+    },
+    {
+      "index": 200,
+      "issue": "26092",
+      "date": "2026-08-15",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 201,
+      "issue": "26093",
+      "date": "2026-08-17",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 202,
+      "issue": "26094",
+      "date": "2026-08-19",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 203,
+      "issue": "26095",
+      "date": "2026-08-22",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 1
+    },
+    {
+      "index": 204,
+      "issue": "26096",
+      "date": "2026-08-24",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 205,
+      "issue": "26097",
+      "date": "2026-08-26",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 206,
+      "issue": "26098",
+      "date": "2026-08-29",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 207,
+      "issue": "26099",
+      "date": "2026-08-31",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 208,
+      "issue": "26100",
+      "date": "2026-09-02",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 209,
+      "issue": "26101",
+      "date": "2026-09-05",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 210,
+      "issue": "26102",
+      "date": "2026-09-07",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 211,
+      "issue": "26103",
+      "date": "2026-09-09",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 212,
+      "issue": "26104",
+      "date": "2026-09-12",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 213,
+      "issue": "26105",
+      "date": "2026-09-14",
+      "selected_brier": 0.13066893424036283,
+      "uniform_brier": 0.13066893424036283,
+      "top_hits": 0
+    },
+    {
+      "index": 214,
+      "issue": "26106",
+      "date": "2026-09-16",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 215,
+      "issue": "26107",
+      "date": "2026-09-19",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 216,
+      "issue": "26108",
+      "date": "2026-09-21",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 2
+    },
+    {
+      "index": 217,
+      "issue": "26109",
+      "date": "2026-09-23",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 218,
+      "issue": "26110",
+      "date": "2026-09-26",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 219,
+      "issue": "26111",
+      "date": "2026-09-28",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 220,
+      "issue": "26112",
+      "date": "2026-09-30",
+      "selected_brier": 0.13066893424036272,
+      "uniform_brier": 0.13066893424036272,
+      "top_hits": 3
+    },
+    {
+      "index": 221,
+      "issue": "26113",
+      "date": "2026-10-05",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 2
+    },
+    {
+      "index": 222,
+      "issue": "26114",
+      "date": "2026-10-07",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 223,
+      "issue": "26115",
+      "date": "2026-10-10",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 224,
+      "issue": "26116",
+      "date": "2026-10-12",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 225,
+      "issue": "26117",
+      "date": "2026-10-14",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 226,
+      "issue": "26118",
+      "date": "2026-10-17",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 227,
+      "issue": "26119",
+      "date": "2026-10-19",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 228,
+      "issue": "26120",
+      "date": "2026-10-21",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 229,
+      "issue": "26121",
+      "date": "2026-10-24",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 230,
+      "issue": "26122",
+      "date": "2026-10-26",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 231,
+      "issue": "26123",
+      "date": "2026-10-28",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 0
+    },
+    {
+      "index": 232,
+      "issue": "26124",
+      "date": "2026-10-31",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 0
+    },
+    {
+      "index": 233,
+      "issue": "26125",
+      "date": "2026-11-02",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 0
+    },
+    {
+      "index": 234,
+      "issue": "26126",
+      "date": "2026-11-04",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 235,
+      "issue": "26127",
+      "date": "2026-11-07",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 236,
+      "issue": "26128",
+      "date": "2026-11-09",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    },
+    {
+      "index": 237,
+      "issue": "26129",
+      "date": "2026-11-11",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 238,
+      "issue": "26130",
+      "date": "2026-11-14",
+      "selected_brier": 0.13066893424036274,
+      "uniform_brier": 0.13066893424036274,
+      "top_hits": 1
+    },
+    {
+      "index": 239,
+      "issue": "26131",
+      "date": "2026-11-16",
+      "selected_brier": 0.13066893424036277,
+      "uniform_brier": 0.13066893424036277,
+      "top_hits": 1
+    },
+    {
+      "index": 240,
+      "issue": "26132",
+      "date": "2026-11-18",
+      "selected_brier": 0.1306689342403628,
+      "uniform_brier": 0.1306689342403628,
+      "top_hits": 1
+    }
+  ],
+  "recent_draws": [
+    {
+      "issue": "26132",
+      "date": "2026-11-18",
+      "front": [
+        2,
+        9,
+        16,
+        26,
+        35
+      ],
+      "back": [
+        6,
+        11
+      ]
+    },
+    {
+      "issue": "26131",
+      "date": "2026-11-16",
+      "front": [
+        2,
+        11,
+        18,
+        19,
+        29
+      ],
+      "back": [
+        4,
+        7
+      ]
+    },
+    {
+      "issue": "26130",
+      "date": "2026-11-14",
+      "front": [
+        1,
+        7,
+        11,
+        27,
+        29
+      ],
+      "back": [
+        2,
+        6
+      ]
+    },
+    {
+      "issue": "26129",
+      "date": "2026-11-11",
+      "front": [
+        2,
+        12,
+        14,
+        17,
+        33
+      ],
+      "back": [
+        7,
+        8
+      ]
+    },
+    {
+      "issue": "26128",
+      "date": "2026-11-09",
+      "front": [
+        3,
+        13,
+        20,
+        25,
+        34
+      ],
+      "back": [
+        9,
+        12
+      ]
+    },
+    {
+      "issue": "26127",
+      "date": "2026-11-07",
+      "front": [
+        5,
+        6,
+        17,
+        18,
+        27
+      ],
+      "back": [
+        3,
+        12
+      ]
+    },
+    {
+      "issue": "26126",
+      "date": "2026-11-04",
+      "front": [
+        5,
+        11,
+        17,
+        25,
+        34
+      ],
+      "back": [
+        4,
+        6
+      ]
+    },
+    {
+      "issue": "26125",
+      "date": "2026-11-02",
+      "front": [
+        12,
+        13,
+        23,
+        25,
+        29
+      ],
+      "back": [
+        7,
+        10
+      ]
+    },
+    {
+      "issue": "26124",
+      "date": "2026-10-31",
+      "front": [
+        12,
+        14,
+        18,
+        22,
+        27
+      ],
+      "back": [
+        1,
+        9
+      ]
+    },
+    {
+      "issue": "26123",
+      "date": "2026-10-28",
+      "front": [
+        13,
+        18,
+        19,
+        20,
+        28
+      ],
+      "back": [
+        9,
+        11
+      ]
+    },
+    {
+      "issue": "26122",
+      "date": "2026-10-26",
+      "front": [
+        2,
+        14,
+        21,
+        22,
+        24
+      ],
+      "back": [
+        2,
+        12
+      ]
+    },
+    {
+      "issue": "26121",
+      "date": "2026-10-24",
+      "front": [
+        6,
+        8,
+        19,
+        24,
+        25
+      ],
+      "back": [
+        1,
+        8
+      ]
+    },
+    {
+      "issue": "26120",
+      "date": "2026-10-21",
+      "front": [
+        1,
+        6,
+        10,
+        15,
+        32
+      ],
+      "back": [
+        3,
+        4
+      ]
+    },
+    {
+      "issue": "26119",
+      "date": "2026-10-19",
+      "front": [
+        3,
+        6,
+        20,
+        24,
+        32
+      ],
+      "back": [
+        4,
+        7
+      ]
+    },
+    {
+      "issue": "26118",
+      "date": "2026-10-17",
+      "front": [
+        2,
+        9,
+        21,
+        26,
+        32
+      ],
+      "back": [
+        6,
+        12
+      ]
+    },
+    {
+      "issue": "26117",
+      "date": "2026-10-14",
+      "front": [
+        4,
+        13,
+        19,
+        29,
+        31
+      ],
+      "back": [
+        2,
+        12
+      ]
+    },
+    {
+      "issue": "26116",
+      "date": "2026-10-12",
+      "front": [
+        9,
+        18,
+        22,
+        25,
+        35
+      ],
+      "back": [
+        1,
+        10
+      ]
+    },
+    {
+      "issue": "26115",
+      "date": "2026-10-10",
+      "front": [
+        12,
+        20,
+        32,
+        33,
+        35
+      ],
+      "back": [
+        6,
+        7
+      ]
+    },
+    {
+      "issue": "26114",
+      "date": "2026-10-07",
+      "front": [
+        8,
+        12,
+        15,
+        29,
+        30
+      ],
+      "back": [
+        9,
+        12
+      ]
+    },
+    {
+      "issue": "26113",
+      "date": "2026-10-05",
+      "front": [
+        2,
+        4,
+        6,
+        10,
+        11
+      ],
+      "back": [
+        1,
+        10
+      ]
+    },
+    {
+      "issue": "26112",
+      "date": "2026-09-30",
+      "front": [
+        1,
+        3,
+        5,
+        10,
+        22
+      ],
+      "back": [
+        3,
+        9
+      ]
+    },
+    {
+      "issue": "26111",
+      "date": "2026-09-28",
+      "front": [
+        10,
+        11,
+        17,
+        26,
+        29
+      ],
+      "back": [
+        1,
+        3
+      ]
+    },
+    {
+      "issue": "26110",
+      "date": "2026-09-26",
+      "front": [
+        3,
+        24,
+        25,
+        26,
+        35
+      ],
+      "back": [
+        7,
+        9
+      ]
+    },
+    {
+      "issue": "26109",
+      "date": "2026-09-23",
+      "front": [
+        12,
+        14,
+        16,
+        27,
+        34
+      ],
+      "back": [
+        4,
+        8
+      ]
+    }
+  ],
+  "quant": {
+    "status": "negative_expected_value",
+    "payout": {
+      "recent_draws": 500.0,
+      "sales": 156885882496.0,
+      "payout": 76957470343.0,
+      "payout_ratio": 0.4905315195901207
+    },
+    "expected_return_ratio": 0.4905315195901207,
+    "house_edge": 0.5094684804098792,
+    "kelly_fraction": 0.0,
+    "risk_budget_rule": "量化仓位为零；若作为娱乐，仅使用预先固定且可完全损失的单期预算。",
+    "budgets": {
+      "10": {
+        "budget": 10,
+        "ticket_count": 5,
+        "expected_prize": 4.905315195901207,
+        "expected_net": -5.094684804098792,
+        "random_portfolio": [
+          {
+            "front": [
+              2,
+              12,
+              19,
+              30,
+              34
+            ],
+            "back": [
+              3,
+              12
+            ]
+          },
+          {
+            "front": [
+              1,
+              3,
+              8,
+              15,
+              22
+            ],
+            "back": [
+              9,
+              12
+            ]
+          },
+          {
+            "front": [
+              1,
+              17,
+              28,
+              31,
+              33
+            ],
+            "back": [
+              8,
+              10
+            ]
+          },
+          {
+            "front": [
+              3,
+              8,
+              15,
+              27,
+              28
+            ],
+            "back": [
+              1,
+              10
+            ]
+          },
+          {
+            "front": [
+              3,
+              9,
+              22,
+              27,
+              30
+            ],
+            "back": [
+              2,
+              6
+            ]
+          }
+        ],
+        "coverage_portfolio": [
+          {
+            "front": [
+              10,
+              19,
+              24,
+              26,
+              28
+            ],
+            "back": [
+              6,
+              7
+            ]
+          },
+          {
+            "front": [
+              12,
+              17,
+              20,
+              22,
+              30
+            ],
+            "back": [
+              8,
+              11
+            ]
+          },
+          {
+            "front": [
+              2,
+              7,
+              8,
+              11,
+              25
+            ],
+            "back": [
+              1,
+              2
+            ]
+          },
+          {
+            "front": [
+              6,
+              13,
+              27,
+              29,
+              31
+            ],
+            "back": [
+              3,
+              12
+            ]
+          },
+          {
+            "front": [
+              1,
+              3,
+              21,
+              32,
+              34
+            ],
+            "back": [
+              4,
+              10
+            ]
+          }
+        ],
+        "rounds": 50000,
+        "random_any_prize": 0.2905,
+        "coverage_any_prize": 0.32476,
+        "coverage_lift_bps": 342.60000000000014,
+        "relative_lift": 0.11793459552495711,
+        "random_avg_max_front_hits": 1.51968,
+        "coverage_avg_max_front_hits": 1.68472,
+        "coverage_tier_rates": {
+          "4": 4e-05,
+          "5": 0.00064,
+          "6": 0.00094,
+          "7": 0.00172,
+          "8": 0.02974,
+          "9": 0.29168
+        }
+      },
+      "20": {
+        "budget": 20,
+        "ticket_count": 10,
+        "expected_prize": 9.810630391802414,
+        "expected_net": -10.189369608197584,
+        "random_portfolio": [
+          {
+            "front": [
+              1,
+              5,
+              20,
+              30,
+              32
+            ],
+            "back": [
+              1,
+              9
+            ]
+          },
+          {
+            "front": [
+              1,
+              4,
+              7,
+              9,
+              32
+            ],
+            "back": [
+              3,
+              8
+            ]
+          },
+          {
+            "front": [
+              4,
+              8,
+              12,
+              24,
+              31
+            ],
+            "back": [
+              3,
+              4
+            ]
+          },
+          {
+            "front": [
+              3,
+              4,
+              5,
+              6,
+              21
+            ],
+            "back": [
+              9,
+              12
+            ]
+          },
+          {
+            "front": [
+              4,
+              7,
+              8,
+              26,
+              30
+            ],
+            "back": [
+              6,
+              10
+            ]
+          },
+          {
+            "front": [
+              8,
+              11,
+              12,
+              20,
+              24
+            ],
+            "back": [
+              1,
+              9
+            ]
+          },
+          {
+            "front": [
+              4,
+              15,
+              16,
+              17,
+              29
+            ],
+            "back": [
+              2,
+              3
+            ]
+          },
+          {
+            "front": [
+              14,
+              22,
+              25,
+              27,
+              30
+            ],
+            "back": [
+              1,
+              8
+            ]
+          },
+          {
+            "front": [
+              1,
+              3,
+              17,
+              21,
+              27
+            ],
+            "back": [
+              1,
+              8
+            ]
+          },
+          {
+            "front": [
+              21,
+              23,
+              25,
+              28,
+              30
+            ],
+            "back": [
+              7,
+              12
+            ]
+          }
+        ],
+        "coverage_portfolio": [
+          {
+            "front": [
+              2,
+              4,
+              18,
+              20,
+              29
+            ],
+            "back": [
+              9,
+              11
+            ]
+          },
+          {
+            "front": [
+              5,
+              9,
+              10,
+              15,
+              34
+            ],
+            "back": [
+              10,
+              12
+            ]
+          },
+          {
+            "front": [
+              6,
+              8,
+              19,
+              26,
+              32
+            ],
+            "back": [
+              4,
+              5
+            ]
+          },
+          {
+            "front": [
+              11,
+              24,
+              25,
+              27,
+              35
+            ],
+            "back": [
+              2,
+              7
+            ]
+          },
+          {
+            "front": [
+              3,
+              12,
+              23,
+              28,
+              30
+            ],
+            "back": [
+              1,
+              3
+            ]
+          },
+          {
+            "front": [
+              1,
+              9,
+              13,
+              16,
+              33
+            ],
+            "back": [
+              6,
+              8
+            ]
+          },
+          {
+            "front": [
+              7,
+              14,
+              17,
+              21,
+              33
+            ],
+            "back": [
+              2,
+              5
+            ]
+          },
+          {
+            "front": [
+              18,
+              22,
+              23,
+              30,
+              31
+            ],
+            "back": [
+              6,
+              11
+            ]
+          },
+          {
+            "front": [
+              2,
+              4,
+              8,
+              24,
+              35
+            ],
+            "back": [
+              1,
+              12
+            ]
+          },
+          {
+            "front": [
+              10,
+              12,
+              13,
+              31,
+              34
+            ],
+            "back": [
+              4,
+              8
+            ]
+          }
+        ],
+        "rounds": 50000,
+        "random_any_prize": 0.48228,
+        "coverage_any_prize": 0.55688,
+        "coverage_lift_bps": 746.0000000000006,
+        "relative_lift": 0.15468192751098964,
+        "random_avg_max_front_hits": 1.88772,
+        "coverage_avg_max_front_hits": 2.01646,
+        "coverage_tier_rates": {
+          "2": 2e-05,
+          "3": 2e-05,
+          "4": 4e-05,
+          "5": 0.00134,
+          "6": 0.0022,
+          "7": 0.00314,
+          "8": 0.06184,
+          "9": 0.48828
+        }
+      },
+      "50": {
+        "budget": 50,
+        "ticket_count": 25,
+        "expected_prize": 24.526575979506035,
+        "expected_net": -25.47342402049396,
+        "random_portfolio": [
+          {
+            "front": [
+              4,
+              7,
+              8,
+              14,
+              19
+            ],
+            "back": [
+              1,
+              6
+            ]
+          },
+          {
+            "front": [
+              1,
+              8,
+              13,
+              18,
+              29
+            ],
+            "back": [
+              5,
+              10
+            ]
+          },
+          {
+            "front": [
+              8,
+              12,
+              20,
+              25,
+              31
+            ],
+            "back": [
+              7,
+              8
+            ]
+          },
+          {
+            "front": [
+              14,
+              18,
+              21,
+              28,
+              33
+            ],
+            "back": [
+              1,
+              8
+            ]
+          },
+          {
+            "front": [
+              2,
+              7,
+              9,
+              13,
+              25
+            ],
+            "back": [
+              4,
+              7
+            ]
+          },
+          {
+            "front": [
+              3,
+              6,
+              17,
+              32,
+              33
+            ],
+            "back": [
+              2,
+              11
+            ]
+          },
+          {
+            "front": [
+              11,
+              14,
+              21,
+              29,
+              31
+            ],
+            "back": [
+              1,
+              10
+            ]
+          },
+          {
+            "front": [
+              10,
+              15,
+              23,
+              26,
+              32
+            ],
+            "back": [
+              8,
+              11
+            ]
+          },
+          {
+            "front": [
+              2,
+              4,
+              15,
+              16,
+              17
+            ],
+            "back": [
+              10,
+              12
+            ]
+          },
+          {
+            "front": [
+              1,
+              2,
+              11,
+              21,
+              33
+            ],
+            "back": [
+              3,
+              6
+            ]
+          },
+          {
+            "front": [
+              7,
+              20,
+              21,
+              23,
+              25
+            ],
+            "back": [
+              1,
+              10
+            ]
+          },
+          {
+            "front": [
+              3,
+              8,
+              17,
+              22,
+              23
+            ],
+            "back": [
+              8,
+              9
+            ]
+          },
+          {
+            "front": [
+              4,
+              8,
+              9,
+              17,
+              31
+            ],
+            "back": [
+              2,
+              5
+            ]
+          },
+          {
+            "front": [
+              5,
+              21,
+              24,
+              28,
+              30
+            ],
+            "back": [
+              3,
+              11
+            ]
+          },
+          {
+            "front": [
+              3,
+              4,
+              9,
+              19,
+              22
+            ],
+            "back": [
+              1,
+              2
+            ]
+          },
+          {
+            "front": [
+              9,
+              10,
+              20,
+              23,
+              28
+            ],
+            "back": [
+              3,
+              7
+            ]
+          },
+          {
+            "front": [
+              6,
+              18,
+              25,
+              28,
+              34
+            ],
+            "back": [
+              5,
+              12
+            ]
+          },
+          {
+            "front": [
+              7,
+              21,
+              25,
+              26,
+              34
+            ],
+            "back": [
+              3,
+              4
+            ]
+          },
+          {
+            "front": [
+              3,
+              11,
+              14,
+              18,
+              35
+            ],
+            "back": [
+              10,
+              12
+            ]
+          },
+          {
+            "front": [
+              2,
+              6,
+              8,
+              11,
+              16
+            ],
+            "back": [
+              4,
+              7
+            ]
+          },
+          {
+            "front": [
+              3,
+              12,
+              13,
+              24,
+              28
+            ],
+            "back": [
+              2,
+              7
+            ]
+          },
+          {
+            "front": [
+              5,
+              7,
+              12,
+              14,
+              26
+            ],
+            "back": [
+              4,
+              9
+            ]
+          },
+          {
+            "front": [
+              7,
+              12,
+              17,
+              26,
+              29
+            ],
+            "back": [
+              3,
+              10
+            ]
+          },
+          {
+            "front": [
+              5,
+              14,
+              25,
+              27,
+              29
+            ],
+            "back": [
+              2,
+              11
+            ]
+          },
+          {
+            "front": [
+              9,
+              13,
+              25,
+              27,
+              29
+            ],
+            "back": [
+              9,
+              11
+            ]
+          }
+        ],
+        "coverage_portfolio": [
+          {
+            "front": [
+              5,
+              8,
+              20,
+              28,
+              31
+            ],
+            "back": [
+              4,
+              11
+            ]
+          },
+          {
+            "front": [
+              7,
+              14,
+              19,
+              29,
+              32
+            ],
+            "back": [
+              3,
+              12
+            ]
+          },
+          {
+            "front": [
+              4,
+              9,
+              23,
+              26,
+              34
+            ],
+            "back": [
+              2,
+              8
+            ]
+          },
+          {
+            "front": [
+              12,
+              15,
+              16,
+              24,
+              35
+            ],
+            "back": [
+              9,
+              10
+            ]
+          },
+          {
+            "front": [
+              1,
+              10,
+              18,
+              21,
+              30
+            ],
+            "back": [
+              1,
+              5
+            ]
+          },
+          {
+            "front": [
+              2,
+              11,
+              13,
+              17,
+              27
+            ],
+            "back": [
+              6,
+              7
+            ]
+          },
+          {
+            "front": [
+              3,
+              4,
+              6,
+              25,
+              30
+            ],
+            "back": [
+              7,
+              12
+            ]
+          },
+          {
+            "front": [
+              5,
+              15,
+              22,
+              25,
+              33
+            ],
+            "back": [
+              1,
+              6
+            ]
+          },
+          {
+            "front": [
+              8,
+              13,
+              20,
+              24,
+              27
+            ],
+            "back": [
+              4,
+              8
+            ]
+          },
+          {
+            "front": [
+              7,
+              10,
+              23,
+              26,
+              34
+            ],
+            "back": [
+              5,
+              11
+            ]
+          },
+          {
+            "front": [
+              3,
+              14,
+              16,
+              21,
+              33
+            ],
+            "back": [
+              3,
+              10
+            ]
+          },
+          {
+            "front": [
+              9,
+              11,
+              17,
+              19,
+              22
+            ],
+            "back": [
+              2,
+              9
+            ]
+          },
+          {
+            "front": [
+              6,
+              9,
+              12,
+              28,
+              29
+            ],
+            "back": [
+              1,
+              7
+            ]
+          },
+          {
+            "front": [
+              1,
+              2,
+              17,
+              22,
+              31
+            ],
+            "back": [
+              9,
+              12
+            ]
+          },
+          {
+            "front": [
+              13,
+              18,
+              28,
+              32,
+              35
+            ],
+            "back": [
+              2,
+              4
+            ]
+          },
+          {
+            "front": [
+              6,
+              10,
+              18,
+              21,
+              23
+            ],
+            "back": [
+              3,
+              5
+            ]
+          },
+          {
+            "front": [
+              2,
+              4,
+              8,
+              11,
+              12
+            ],
+            "back": [
+              6,
+              11
+            ]
+          },
+          {
+            "front": [
+              3,
+              14,
+              19,
+              24,
+              33
+            ],
+            "back": [
+              8,
+              10
+            ]
+          },
+          {
+            "front": [
+              1,
+              25,
+              26,
+              31,
+              32
+            ],
+            "back": [
+              3,
+              11
+            ]
+          },
+          {
+            "front": [
+              5,
+              7,
+              16,
+              29,
+              31
+            ],
+            "back": [
+              4,
+              6
+            ]
+          },
+          {
+            "front": [
+              10,
+              11,
+              20,
+              27,
+              30
+            ],
+            "back": [
+              7,
+              9
+            ]
+          },
+          {
+            "front": [
+              15,
+              18,
+              26,
+              34,
+              35
+            ],
+            "back": [
+              8,
+              12
+            ]
+          },
+          {
+            "front": [
+              12,
+              19,
+              21,
+              27,
+              30
+            ],
+            "back": [
+              2,
+              10
+            ]
+          },
+          {
+            "front": [
+              6,
+              14,
+              23,
+              29,
+              33
+            ],
+            "back": [
+              5,
+              10
+            ]
+          },
+          {
+            "front": [
+              5,
+              7,
+              15,
+              22,
+              24
+            ],
+            "back": [
+              1,
+              2
+            ]
+          }
+        ],
+        "rounds": 50000,
+        "random_any_prize": 0.8449,
+        "coverage_any_prize": 0.87812,
+        "coverage_lift_bps": 332.2000000000003,
+        "relative_lift": 0.03931826251627424,
+        "random_avg_max_front_hits": 2.2943,
+        "coverage_avg_max_front_hits": 2.31636,
+        "coverage_tier_rates": {
+          "2": 2e-05,
+          "3": 6e-05,
+          "4": 0.00018,
+          "5": 0.00364,
+          "6": 0.00482,
+          "7": 0.00834,
+          "8": 0.13916,
+          "9": 0.7219
+        }
+      }
+    },
+    "explanation": "覆盖组合可提高固定注数下“至少中一个末奖或更高奖级”的模拟覆盖率，但不会改变每张彩票的独立期望收益。历史返奖率低于 100%，专业仓位应为零。",
+    "portfolio_method": "低重叠贪心：降低前区重复、后区对重复和整票重复，再用蒙特卡洛统一抽样比较。"
+  },
+  "cycles": {
+    "definition": {
+      "window_draws": 5,
+      "lag_test": "比较相隔 k 期的两期号码重合数，k=1…5。",
+      "continuation": "α>0：提高最近五期出现次数较高号码的权重。",
+      "reversal": "α<0：提高最近五期出现次数较低号码的权重。",
+      "alpha_range": [
+        -1.0,
+        1.0
+      ]
+    },
+    "lag_tests": {
+      "front": [
+        {
+          "lag": 1,
+          "observed_overlap": 0.7270261105459478,
+          "expected_overlap": 0.7142857142857143,
+          "excess": 0.012740396260233489,
+          "p_value": 0.3547044129891757,
+          "z_score": 0.7302961261919547,
+          "bonferroni_p": 1.0,
+          "significant": false
+        },
+        {
+          "lag": 2,
+          "observed_overlap": 0.7238805970149254,
+          "expected_overlap": 0.7142857142857143,
+          "excess": 0.009594882729211052,
+          "p_value": 0.4912572855953372,
+          "z_score": 0.4957585838358817,
+          "bonferroni_p": 1.0,
+          "significant": false
+        },
+        {
+          "lag": 3,
+          "observed_overlap": 0.7176789955887343,
+          "expected_overlap": 0.7142857142857143,
+          "excess": 0.0033932813030199682,
+          "p_value": 0.8159866777685262,
+          "z_score": 0.05248351865799293,
+          "bonferroni_p": 1.0,
+          "significant": false
+        },
+        {
+          "lag": 4,
+          "observed_overlap": 0.7460964019008826,
+          "expected_overlap": 0.7142857142857143,
+          "excess": 0.031810687615168254,
+          "p_value": 0.025811823480432972,
+          "z_score": 2.111419107335935,
+          "bonferroni_p": 0.2581182348043297,
+          "significant": false
+        },
+        {
+          "lag": 5,
+          "observed_overlap": 0.7443123938879457,
+          "expected_overlap": 0.7142857142857143,
+          "excess": 0.030026679602231376,
+          "p_value": 0.03413821815154038,
+          "z_score": 1.9694963638023038,
+          "bonferroni_p": 0.34138218151540384,
+          "significant": false
+        }
+      ],
+      "back": [
+        {
+          "lag": 1,
+          "observed_overlap": 0.3279077653441845,
+          "expected_overlap": 0.3333333333333333,
+          "excess": -0.005425567989148838,
+          "p_value": 0.5478767693588676,
+          "z_score": -0.6505897752004465,
+          "bonferroni_p": 1.0,
+          "significant": false
+        },
+        {
+          "lag": 2,
+          "observed_overlap": 0.30902306648575306,
+          "expected_overlap": 0.3333333333333333,
+          "excess": -0.024310266847580253,
+          "p_value": 0.00832639467110741,
+          "z_score": -2.6573923303701408,
+          "bonferroni_p": 0.0832639467110741,
+          "significant": false
+        },
+        {
+          "lag": 3,
+          "observed_overlap": 0.33627417712928404,
+          "expected_overlap": 0.3333333333333333,
+          "excess": 0.0029408437959507205,
+          "p_value": 0.7343880099916736,
+          "z_score": 0.3197890781692019,
+          "bonferroni_p": 1.0,
+          "significant": false
+        },
+        {
+          "lag": 4,
+          "observed_overlap": 0.33061778682959947,
+          "expected_overlap": 0.3333333333333333,
+          "excess": -0.0027155465037338455,
+          "p_value": 0.7710241465445462,
+          "z_score": -0.28716714145896705,
+          "bonferroni_p": 1.0,
+          "significant": false
+        },
+        {
+          "lag": 5,
+          "observed_overlap": 0.34125636672325976,
+          "expected_overlap": 0.3333333333333333,
+          "excess": 0.007923033389926448,
+          "p_value": 0.3913405495420483,
+          "z_score": 0.819093540121154,
+          "bonferroni_p": 1.0,
+          "significant": false
+        }
+      ],
+      "lag5_front": {
+        "lag": 5,
+        "observed_overlap": 0.7443123938879457,
+        "expected_overlap": 0.7142857142857143,
+        "excess": 0.030026679602231376,
+        "p_value": 0.03413821815154038,
+        "z_score": 1.9694963638023038,
+        "bonferroni_p": 0.34138218151540384,
+        "significant": false
+      },
+      "lag5_back": {
+        "lag": 5,
+        "observed_overlap": 0.34125636672325976,
+        "expected_overlap": 0.3333333333333333,
+        "excess": 0.007923033389926448,
+        "p_value": 0.3913405495420483,
+        "z_score": 0.819093540121154,
+        "bonferroni_p": 1.0,
+        "significant": false
+      }
+    },
+    "block_tests": {
+      "block_count": 590,
+      "features": [
+        {
+          "feature": "mean_sum",
+          "label": "前区平均和值",
+          "correlation": 0.20659893559786074,
+          "p_value": 0.0008326394671107411,
+          "bonferroni_p": 0.0033305578684429643,
+          "significant": true
+        },
+        {
+          "feature": "mean_odd",
+          "label": "前区平均奇数个数",
+          "correlation": 0.04170099889535636,
+          "p_value": 0.3097418817651957,
+          "bonferroni_p": 1.0,
+          "significant": false
+        },
+        {
+          "feature": "mean_big",
+          "label": "前区平均大号个数",
+          "correlation": 0.16231152071802277,
+          "p_value": 0.0008326394671107411,
+          "bonferroni_p": 0.0033305578684429643,
+          "significant": true
+        },
+        {
+          "feature": "mean_span",
+          "label": "前区平均跨度",
+          "correlation": -0.04136421509299595,
+          "p_value": 0.3222314737718568,
+          "bonferroni_p": 1.0,
+          "significant": false
+        }
+      ],
+      "direction_tests": [
+        {
+          "feature": "mean_sum",
+          "label": "前区平均和值",
+          "continuation_rate": 0.587521663778163,
+          "reversal_rate": 0.4124783362218371,
+          "trials": 577,
+          "p_value": 3.006392184023112e-05,
+          "bonferroni_p": 0.00012025568736092448,
+          "significant": true
+        },
+        {
+          "feature": "mean_odd",
+          "label": "前区平均奇数个数",
+          "continuation_rate": 0.49877750611246946,
+          "reversal_rate": 0.5012224938875306,
+          "trials": 409,
+          "p_value": 1.0,
+          "bonferroni_p": 1.0,
+          "significant": false
+        },
+        {
+          "feature": "mean_big",
+          "label": "前区平均大号个数",
+          "continuation_rate": 0.5675057208237986,
+          "reversal_rate": 0.43249427917620137,
+          "trials": 437,
+          "p_value": 0.005468081180667753,
+          "bonferroni_p": 0.021872324722671012,
+          "significant": true
+        },
+        {
+          "feature": "mean_span",
+          "label": "前区平均跨度",
+          "continuation_rate": 0.48201438848920863,
+          "reversal_rate": 0.5179856115107914,
+          "trials": 556,
+          "p_value": 0.4203946161113764,
+          "bonferroni_p": 1.0,
+          "significant": false
+        }
+      ],
+      "significant_features": 2
+    },
+    "alpha_scan": [
+      {
+        "alpha": -1.0,
+        "brier": 0.1321828396858486,
+        "front_hits": 0.74,
+        "back_hits": 0.34384615384615386,
+        "brier_by_draw": [],
+        "direction": "反转"
+      },
+      {
+        "alpha": -0.75,
+        "brier": 0.1316977306570829,
+        "front_hits": 0.74,
+        "back_hits": 0.34384615384615386,
+        "brier_by_draw": [],
+        "direction": "反转"
+      },
+      {
+        "alpha": -0.5,
+        "brier": 0.13121376268369525,
+        "front_hits": 0.74,
+        "back_hits": 0.34384615384615386,
+        "brier_by_draw": [],
+        "direction": "反转"
+      },
+      {
+        "alpha": -0.25,
+        "brier": 0.13082419877178475,
+        "front_hits": 0.74,
+        "back_hits": 0.34384615384615386,
+        "brier_by_draw": [],
+        "direction": "反转"
+      },
+      {
+        "alpha": 0.0,
+        "brier": 0.13066893424036283,
+        "front_hits": 0.7823076923076923,
+        "back_hits": 0.3323076923076923,
+        "brier_by_draw": [],
+        "direction": "均匀基线"
+      },
+      {
+        "alpha": 0.25,
+        "brier": 0.13103627273024596,
+        "front_hits": 0.7523076923076923,
+        "back_hits": 0.3192307692307692,
+        "brier_by_draw": [],
+        "direction": "延续"
+      },
+      {
+        "alpha": 0.5,
+        "brier": 0.1326143748667558,
+        "front_hits": 0.7523076923076923,
+        "back_hits": 0.3192307692307692,
+        "brier_by_draw": [],
+        "direction": "延续"
+      },
+      {
+        "alpha": 0.75,
+        "brier": 0.13744475985522414,
+        "front_hits": 0.7523076923076923,
+        "back_hits": 0.3192307692307692,
+        "brier_by_draw": [],
+        "direction": "延续"
+      },
+      {
+        "alpha": 1.0,
+        "brier": 0.15675356999593612,
+        "front_hits": 0.7523076923076923,
+        "back_hits": 0.3192307692307692,
+        "brier_by_draw": [],
+        "direction": "延续"
+      }
+    ],
+    "selection": {
+      "selected_alpha": 0.0,
+      "raw_best_alpha": -0.25,
+      "passes_gate": false,
+      "development_gain_bps": -1.552645314219202,
+      "development_ci_low_bps": -2.9746781681965024,
+      "development_ci_high_bps": -0.19364721355443376,
+      "holdout_gain_bps": 0.0,
+      "verdict": "部分描述性周期指标偏离均值，但没有形成通过独立留出复核的可交易规律。"
+    },
+    "summary": {
+      "structure_continuation": true,
+      "number_identity_edge": false,
+      "execution_edge": false,
+      "structure_label": "存在弱延续",
+      "number_label": "无可交易优势",
+      "execution_label": "均匀基线"
+    },
+    "metrics": {
+      "development_draws": 1300,
+      "holdout_draws": 240,
+      "uniform_dev_brier": 0.13066893424036283,
+      "selected_dev_brier": 0.13066893424036283,
+      "selected_holdout_brier": 0.13066893424036283,
+      "uniform_holdout_brier": 0.13066893424036283,
+      "switching": {
+        "lookback": 200,
+        "switched_brier": 0.13065916211970902,
+        "uniform_brier": 0.13066893424036283,
+        "gain_bps": 0.097721206538115,
+        "alpha_choices": {
+          "+0.00": 238,
+          "+0.25": 2
+        }
+      }
+    },
+    "latest_window": {
+      "front": [
+        2,
+        11,
+        29,
+        1,
+        3
+      ],
+      "back": [
+        6,
+        7
+      ],
+      "front_counts": [
+        1,
+        3,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "back_counts": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    "latest_block": {
+      "issues": [
+        "26128",
+        "26129",
+        "26130",
+        "26131",
+        "26132"
+      ],
+      "features": [
+        {
+          "feature": "mean_sum",
+          "label": "平均和值",
+          "current": 83.0,
+          "median": 91.6,
+          "direction": "偏低",
+          "continuation_forecast": "偏低"
+        },
+        {
+          "feature": "mean_odd",
+          "label": "平均奇数个数",
+          "current": 3.0,
+          "median": 2.6,
+          "direction": "偏高",
+          "continuation_forecast": "偏高"
+        },
+        {
+          "feature": "mean_big",
+          "label": "平均大号个数",
+          "current": 2.2,
+          "median": 2.6,
+          "direction": "偏低",
+          "continuation_forecast": "偏低"
+        },
+        {
+          "feature": "mean_span",
+          "label": "平均跨度",
+          "current": 30.0,
+          "median": 24.2,
+          "direction": "偏高",
+          "continuation_forecast": "偏高"
+        }
+      ]
+    },
+    "holdout_series": [
+      {
+        "issue": "25043",
+        "date": "2025-04-21",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25044",
+        "date": "2025-04-23",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25045",
+        "date": "2025-04-26",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25046",
+        "date": "2025-04-28",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25047",
+        "date": "2025-04-30",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25048",
+        "date": "2025-05-03",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25049",
+        "date": "2025-05-05",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25050",
+        "date": "2025-05-07",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25051",
+        "date": "2025-05-10",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25052",
+        "date": "2025-05-12",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25053",
+        "date": "2025-05-14",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25054",
+        "date": "2025-05-17",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25055",
+        "date": "2025-05-19",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25056",
+        "date": "2025-05-21",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25057",
+        "date": "2025-05-24",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25058",
+        "date": "2025-05-26",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25059",
+        "date": "2025-05-28",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25060",
+        "date": "2025-05-31",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25061",
+        "date": "2025-06-02",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25062",
+        "date": "2025-06-04",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25063",
+        "date": "2025-06-07",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25064",
+        "date": "2025-06-09",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25065",
+        "date": "2025-06-11",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25066",
+        "date": "2025-06-14",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25067",
+        "date": "2025-06-16",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25068",
+        "date": "2025-06-18",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25069",
+        "date": "2025-06-21",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25070",
+        "date": "2025-06-23",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25071",
+        "date": "2025-06-25",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25072",
+        "date": "2025-06-28",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25073",
+        "date": "2025-06-30",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25074",
+        "date": "2025-07-02",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25075",
+        "date": "2025-07-05",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25076",
+        "date": "2025-07-07",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25077",
+        "date": "2025-07-09",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25078",
+        "date": "2025-07-12",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25079",
+        "date": "2025-07-14",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25080",
+        "date": "2025-07-16",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25081",
+        "date": "2025-07-19",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25082",
+        "date": "2025-07-21",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25083",
+        "date": "2025-07-23",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25084",
+        "date": "2025-07-26",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25085",
+        "date": "2025-07-28",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25086",
+        "date": "2025-07-30",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25087",
+        "date": "2025-08-02",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25088",
+        "date": "2025-08-04",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25089",
+        "date": "2025-08-06",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25090",
+        "date": "2025-08-09",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25091",
+        "date": "2025-08-11",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25092",
+        "date": "2025-08-13",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25093",
+        "date": "2025-08-16",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25094",
+        "date": "2025-08-18",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25095",
+        "date": "2025-08-20",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25096",
+        "date": "2025-08-23",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25097",
+        "date": "2025-08-25",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25098",
+        "date": "2025-08-27",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25099",
+        "date": "2025-08-30",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25100",
+        "date": "2025-09-01",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25101",
+        "date": "2025-09-03",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25102",
+        "date": "2025-09-06",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25103",
+        "date": "2025-09-08",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25104",
+        "date": "2025-09-10",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25105",
+        "date": "2025-09-13",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25106",
+        "date": "2025-09-15",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25107",
+        "date": "2025-09-17",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25108",
+        "date": "2025-09-20",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25109",
+        "date": "2025-09-22",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25110",
+        "date": "2025-09-24",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25111",
+        "date": "2025-09-27",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25112",
+        "date": "2025-09-29",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25113",
+        "date": "2025-10-06",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25114",
+        "date": "2025-10-08",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25115",
+        "date": "2025-10-11",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25116",
+        "date": "2025-10-13",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25117",
+        "date": "2025-10-15",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25118",
+        "date": "2025-10-18",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25119",
+        "date": "2025-10-20",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25120",
+        "date": "2025-10-22",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25121",
+        "date": "2025-10-25",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25122",
+        "date": "2025-10-27",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25123",
+        "date": "2025-10-29",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25124",
+        "date": "2025-11-01",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25125",
+        "date": "2025-11-03",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25126",
+        "date": "2025-11-05",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25127",
+        "date": "2025-11-08",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25128",
+        "date": "2025-11-10",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25129",
+        "date": "2025-11-12",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25130",
+        "date": "2025-11-15",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25131",
+        "date": "2025-11-17",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25132",
+        "date": "2025-11-19",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25133",
+        "date": "2025-11-22",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25134",
+        "date": "2025-11-24",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25135",
+        "date": "2025-11-26",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25136",
+        "date": "2025-11-29",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25137",
+        "date": "2025-12-01",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25138",
+        "date": "2025-12-03",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25139",
+        "date": "2025-12-06",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25140",
+        "date": "2025-12-08",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25141",
+        "date": "2025-12-10",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25142",
+        "date": "2025-12-13",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25143",
+        "date": "2025-12-15",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25144",
+        "date": "2025-12-17",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25145",
+        "date": "2025-12-20",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25146",
+        "date": "2025-12-22",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25147",
+        "date": "2025-12-24",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25148",
+        "date": "2025-12-27",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25149",
+        "date": "2025-12-29",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "25150",
+        "date": "2025-12-31",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26001",
+        "date": "2026-01-03",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26002",
+        "date": "2026-01-05",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26003",
+        "date": "2026-01-07",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26004",
+        "date": "2026-01-10",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26005",
+        "date": "2026-01-12",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26006",
+        "date": "2026-01-14",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26007",
+        "date": "2026-01-17",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26008",
+        "date": "2026-01-19",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26009",
+        "date": "2026-01-21",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26010",
+        "date": "2026-01-24",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26011",
+        "date": "2026-01-26",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26012",
+        "date": "2026-01-28",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26013",
+        "date": "2026-01-31",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26014",
+        "date": "2026-02-02",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26015",
+        "date": "2026-02-04",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26016",
+        "date": "2026-02-07",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26017",
+        "date": "2026-02-09",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26018",
+        "date": "2026-02-11",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26019",
+        "date": "2026-02-25",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26020",
+        "date": "2026-02-28",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26021",
+        "date": "2026-03-02",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26022",
+        "date": "2026-03-04",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26023",
+        "date": "2026-03-07",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26024",
+        "date": "2026-03-09",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26025",
+        "date": "2026-03-11",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26026",
+        "date": "2026-03-14",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26027",
+        "date": "2026-03-16",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26028",
+        "date": "2026-03-18",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26029",
+        "date": "2026-03-21",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26030",
+        "date": "2026-03-23",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26031",
+        "date": "2026-03-25",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26032",
+        "date": "2026-03-28",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26033",
+        "date": "2026-03-30",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26034",
+        "date": "2026-04-01",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26035",
+        "date": "2026-04-04",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26036",
+        "date": "2026-04-06",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26037",
+        "date": "2026-04-08",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26038",
+        "date": "2026-04-11",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26039",
+        "date": "2026-04-13",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26040",
+        "date": "2026-04-15",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26041",
+        "date": "2026-04-18",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26042",
+        "date": "2026-04-20",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26043",
+        "date": "2026-04-22",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26044",
+        "date": "2026-04-25",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26045",
+        "date": "2026-04-27",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26046",
+        "date": "2026-04-29",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26047",
+        "date": "2026-05-02",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26048",
+        "date": "2026-05-04",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26049",
+        "date": "2026-05-06",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26050",
+        "date": "2026-05-09",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26051",
+        "date": "2026-05-11",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26052",
+        "date": "2026-05-13",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26053",
+        "date": "2026-05-16",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26054",
+        "date": "2026-05-18",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26055",
+        "date": "2026-05-20",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26056",
+        "date": "2026-05-23",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26057",
+        "date": "2026-05-25",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26058",
+        "date": "2026-05-27",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26059",
+        "date": "2026-05-30",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26060",
+        "date": "2026-06-01",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26061",
+        "date": "2026-06-03",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26062",
+        "date": "2026-06-06",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26063",
+        "date": "2026-06-08",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26064",
+        "date": "2026-06-10",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26065",
+        "date": "2026-06-13",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26066",
+        "date": "2026-06-15",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26067",
+        "date": "2026-06-17",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26068",
+        "date": "2026-06-20",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26069",
+        "date": "2026-06-22",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26070",
+        "date": "2026-06-24",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26071",
+        "date": "2026-06-27",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26072",
+        "date": "2026-06-29",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26073",
+        "date": "2026-07-01",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26074",
+        "date": "2026-07-04",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26075",
+        "date": "2026-07-06",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26076",
+        "date": "2026-07-08",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26077",
+        "date": "2026-07-11",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26078",
+        "date": "2026-07-13",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26079",
+        "date": "2026-07-15",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26080",
+        "date": "2026-07-18",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26081",
+        "date": "2026-07-20",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26082",
+        "date": "2026-07-22",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26083",
+        "date": "2026-07-25",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26084",
+        "date": "2026-07-27",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26085",
+        "date": "2026-07-29",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26086",
+        "date": "2026-08-01",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26087",
+        "date": "2026-08-03",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26088",
+        "date": "2026-08-05",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26089",
+        "date": "2026-08-08",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26090",
+        "date": "2026-08-10",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26091",
+        "date": "2026-08-12",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26092",
+        "date": "2026-08-15",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26093",
+        "date": "2026-08-17",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26094",
+        "date": "2026-08-19",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26095",
+        "date": "2026-08-22",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26096",
+        "date": "2026-08-24",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26097",
+        "date": "2026-08-26",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26098",
+        "date": "2026-08-29",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26099",
+        "date": "2026-08-31",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26100",
+        "date": "2026-09-02",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26101",
+        "date": "2026-09-05",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26102",
+        "date": "2026-09-07",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26103",
+        "date": "2026-09-09",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26104",
+        "date": "2026-09-12",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26105",
+        "date": "2026-09-14",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26106",
+        "date": "2026-09-16",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26107",
+        "date": "2026-09-19",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26108",
+        "date": "2026-09-21",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26109",
+        "date": "2026-09-23",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26110",
+        "date": "2026-09-26",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26111",
+        "date": "2026-09-28",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26112",
+        "date": "2026-09-30",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26113",
+        "date": "2026-10-05",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26114",
+        "date": "2026-10-07",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26115",
+        "date": "2026-10-10",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26116",
+        "date": "2026-10-12",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26117",
+        "date": "2026-10-14",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26118",
+        "date": "2026-10-17",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26119",
+        "date": "2026-10-19",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26120",
+        "date": "2026-10-21",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26121",
+        "date": "2026-10-24",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26122",
+        "date": "2026-10-26",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26123",
+        "date": "2026-10-28",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26124",
+        "date": "2026-10-31",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26125",
+        "date": "2026-11-02",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26126",
+        "date": "2026-11-04",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26127",
+        "date": "2026-11-07",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26128",
+        "date": "2026-11-09",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26129",
+        "date": "2026-11-11",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26130",
+        "date": "2026-11-14",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26131",
+        "date": "2026-11-16",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      },
+      {
+        "issue": "26132",
+        "date": "2026-11-18",
+        "selected_brier": 0.13066893424036283,
+        "uniform_brier": 0.13066893424036283
+      }
+    ]
+  },
+  "fusion": {
+    "status": "uniform_selected",
+    "selected_model": "均匀先验",
+    "selected_weights": {
+      "uniform": 1.0
+    },
+    "verdict": "公开策略家族没有通过堆叠融合显著性门槛，系统采用均匀先验。",
+    "market_models": [
+      {
+        "key": "neighbor",
+        "name": "邻号跟随",
+        "family": "重号邻号",
+        "description": "关注上期号码的相邻号码，对应斜连和邻号跟随。",
+        "train_brier": 0.13067630430119068,
+        "validation_brier": 0.13066017114042944,
+        "validation_gain_bps": 0.08763099933389862,
+        "rank": 1
+      },
+      {
+        "key": "markov",
+        "name": "状态转移",
+        "family": "马尔可夫",
+        "description": "按号码上期是否出现，估计本期出现的条件概率。",
+        "train_brier": 0.1306716696473085,
+        "validation_brier": 0.13066651074801172,
+        "validation_gain_bps": 0.02423492351105727,
+        "rank": 2
+      },
+      {
+        "key": "position",
+        "name": "位置分布",
+        "family": "定位算法",
+        "description": "从历史第 1—5 位（后区第 1—2 位）的边际分布估计冷热位置。",
+        "train_brier": 0.13067150239170008,
+        "validation_brier": 0.1306681178177657,
+        "validation_gain_bps": 0.008164225971385441,
+        "rank": 3
+      },
+      {
+        "key": "uniform",
+        "name": "均匀先验",
+        "family": "概率基准",
+        "description": "所有合法单注同权，作为一切融合模型的收缩中心。",
+        "train_brier": 0.13066893424036283,
+        "validation_brier": 0.13066893424036283,
+        "validation_gain_bps": 0.0,
+        "rank": 4
+      },
+      {
+        "key": "seasonality",
+        "name": "季节月效应",
+        "family": "日历周期",
+        "description": "仅使用历史同月份号码密度，估计月度弱偏移。",
+        "train_brier": 0.13067030725645304,
+        "validation_brier": 0.13067644012244975,
+        "validation_gain_bps": -0.07505882086922266,
+        "rank": 5
+      },
+      {
+        "key": "cooccurrence",
+        "name": "共现邻接",
+        "family": "关系网络",
+        "description": "利用历史共现矩阵，追踪与上期号码关联较强的号码。",
+        "train_brier": 0.1306877609534682,
+        "validation_brier": 0.1306812499768366,
+        "validation_gain_bps": -0.1231573647378359,
+        "rank": 6
+      },
+      {
+        "key": "zone_rotation",
+        "name": "区间轮动",
+        "family": "区间分布",
+        "description": "最近十期偏冷区间获得回补权重，偏热区间降温。",
+        "train_brier": 0.13069210222561464,
+        "validation_brier": 0.1306818003958761,
+        "validation_gain_bps": -0.12866155513269195,
+        "rank": 7
+      },
+      {
+        "key": "momentum",
+        "name": "指数动量",
+        "family": "趋势跟踪",
+        "description": "融合 30/60/120 期半衰期，识别短到中期热度。",
+        "train_brier": 0.13065065899068598,
+        "validation_brier": 0.13070657474635106,
+        "validation_gain_bps": -0.3764050598822899,
+        "rank": 8
+      },
+      {
+        "key": "hot_cold",
+        "name": "热冷配比",
+        "family": "冷热追踪",
+        "description": "近期热号与当前遗漏共同评分，模拟热温冷配比。",
+        "train_brier": 0.13068636914232867,
+        "validation_brier": 0.1307106080413829,
+        "validation_gain_bps": -0.41673801020075674,
+        "rank": 9
+      },
+      {
+        "key": "omission",
+        "name": "遗漏回补",
+        "family": "遗漏系统",
+        "description": "提高当前遗漏期数较高的号码，对应阶段性回归思路。",
+        "train_brier": 0.1310687617511114,
+        "validation_brier": 0.13096042305337627,
+        "validation_gain_bps": -2.9148881301344076,
+        "rank": 10
+      }
+    ],
+    "fusion_candidates": [
+      {
+        "name": "Top5 · 融合 35%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov",
+          "neighbor"
+        ],
+        "strength": 0.35,
+        "complexity": 5,
+        "validation_brier": 0.13066826586362798,
+        "rank": 1
+      },
+      {
+        "name": "Top5 · 融合 20%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov",
+          "neighbor"
+        ],
+        "strength": 0.2,
+        "complexity": 5,
+        "validation_brier": 0.13066848759574334,
+        "rank": 2
+      },
+      {
+        "name": "Top5 · 融合 10%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov",
+          "neighbor"
+        ],
+        "strength": 0.1,
+        "complexity": 5,
+        "validation_brier": 0.13066868934636752,
+        "rank": 3
+      },
+      {
+        "name": "Top6 · 融合 20%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov",
+          "neighbor",
+          "hot_cold"
+        ],
+        "strength": 0.2,
+        "complexity": 6,
+        "validation_brier": 0.1306687926052526,
+        "rank": 4
+      },
+      {
+        "name": "Top5 · 融合 5%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov",
+          "neighbor"
+        ],
+        "strength": 0.05,
+        "complexity": 5,
+        "validation_brier": 0.13066880640044376,
+        "rank": 5
+      },
+      {
+        "name": "Top6 · 融合 10%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov",
+          "neighbor",
+          "hot_cold"
+        ],
+        "strength": 0.1,
+        "complexity": 6,
+        "validation_brier": 0.13066883397905468,
+        "rank": 6
+      },
+      {
+        "name": "Top6 · 融合 35%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov",
+          "neighbor",
+          "hot_cold"
+        ],
+        "strength": 0.35,
+        "complexity": 6,
+        "validation_brier": 0.13066884095862333,
+        "rank": 7
+      },
+      {
+        "name": "Top6 · 融合 5%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov",
+          "neighbor",
+          "hot_cold"
+        ],
+        "strength": 0.05,
+        "complexity": 6,
+        "validation_brier": 0.13066887674877048,
+        "rank": 8
+      },
+      {
+        "name": "Top5 · 融合 2%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov",
+          "neighbor"
+        ],
+        "strength": 0.02,
+        "complexity": 5,
+        "validation_brier": 0.13066888181009406,
+        "rank": 9
+      },
+      {
+        "name": "Top6 · 融合 2%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov",
+          "neighbor",
+          "hot_cold"
+        ],
+        "strength": 0.02,
+        "complexity": 6,
+        "validation_brier": 0.13066890947710072,
+        "rank": 10
+      },
+      {
+        "name": "Top4 · 融合 2%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov"
+        ],
+        "strength": 0.02,
+        "complexity": 4,
+        "validation_brier": 0.130669020696657,
+        "rank": 11
+      },
+      {
+        "name": "Top3 · 融合 2%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position"
+        ],
+        "strength": 0.02,
+        "complexity": 3,
+        "validation_brier": 0.1306690773436182,
+        "rank": 12
+      },
+      {
+        "name": "Top4 · 融合 5%",
+        "models": [
+          "momentum",
+          "seasonality",
+          "position",
+          "markov"
+        ],
+        "strength": 0.05,
+        "complexity": 4,
+        "validation_brier": 0.13066915349760486,
+        "rank": 13
+      },
+      {
+        "name": "Top2 · 融合 2%",
+        "models": [
+          "momentum",
+          "seasonality"
+        ],
+        "strength": 0.02,
+        "complexity": 2,
+        "validation_brier": 0.1306691691977036,
+        "rank": 14
+      },
+      {
+        "name": "Top1 · 融合 2%",
+        "models": [
+          "momentum"
+        ],
+        "strength": 0.02,
+        "complexity": 1,
+        "validation_brier": 0.1306692919082585,
+        "rank": 15
+      }
+    ],
+    "selection": {
+      "raw_best": "Top5 · 融合 35%",
+      "raw_best_models": [
+        "momentum",
+        "seasonality",
+        "position",
+        "markov",
+        "neighbor"
+      ],
+      "raw_best_strength": 0.35,
+      "passes_gate": false,
+      "validation_gain_bps": 0.0066837673484541425,
+      "validation_ci_low_bps": -0.061804829344243764,
+      "validation_ci_high_bps": 0.08410329473500511,
+      "holdout_gain_bps": 0.0
+    },
+    "metrics": {
+      "training_draws": 1100,
+      "validation_draws": 300,
+      "holdout_draws": 240,
+      "uniform_train_brier": 0.13066893424036283,
+      "uniform_validation_brier": 0.13066893424036283,
+      "selected_validation_brier": 0.13066893424036283,
+      "selected_holdout_brier": 0.13066893424036283,
+      "uniform_holdout_brier": 0.13066893424036283,
+      "model_count": 10,
+      "candidate_count": 30
+    },
+    "composition_models": [
+      {
+        "name": "旋转矩阵",
+        "role": "覆盖优化",
+        "status": "不改概率",
+        "description": "降低固定号码池的组合数量，适合明确预算后的覆盖设计。"
+      },
+      {
+        "name": "胆拖组合",
+        "role": "组合表达",
+        "status": "需高确信胆码",
+        "description": "胆码错误会系统性破坏整组，当前没有足够证据宣称存在高确信胆码。"
+      },
+      {
+        "name": "结构过滤",
+        "role": "组合筛选",
+        "status": "仅改善分散",
+        "description": "和值、跨度、奇偶、区间、质数和尾数过滤不提升单注理论概率。"
+      },
+      {
+        "name": "倍投止损",
+        "role": "资金管理",
+        "status": "负期望下禁用",
+        "description": "不追损、不倍投；负期望时 Kelly 仓位为零。"
+      }
+    ],
+    "note": "公开模型家族来自本地策略资料中的冷热、遗漏、区间、定位、邻号和组合方法；未假设任何未公开商业算法可复现。"
+  },
+  "forecast": {
+    "target_issue": "26133",
+    "target_date": "2026-11-21",
+    "holdout_draws": 240,
+    "strategies": [
+      {
+        "key": "uniform",
+        "name": "均匀对照",
+        "description": "校准后的理论等概率基线。",
+        "brier": 0.13066893424036283,
+        "front_top_hits": 0.7416666666666667,
+        "back_top_hits": 0.37916666666666665,
+        "prize_hits": 11,
+        "prize_rate": 0.04583333333333333,
+        "tier_hits": {
+          "9": 10,
+          "6": 1
+        },
+        "next_ticket": {
+          "front": [
+            1,
+            7,
+            9,
+            18,
+            34
+          ],
+          "back": [
+            3,
+            4
+          ]
+        },
+        "gain_bps": 0.0,
+        "rank": 1
+      },
+      {
+        "key": "fusion",
+        "name": "堆叠融合",
+        "description": "五个候选模型的 35% 探索性融合。",
+        "brier": 0.1306719005183883,
+        "front_top_hits": 0.6791666666666667,
+        "back_top_hits": 0.31666666666666665,
+        "prize_hits": 22,
+        "prize_rate": 0.09166666666666666,
+        "tier_hits": {
+          "9": 20,
+          "7": 1,
+          "8": 1
+        },
+        "next_ticket": {
+          "front": [
+            8,
+            13,
+            26,
+            30,
+            34
+          ],
+          "back": [
+            2,
+            8
+          ]
+        },
+        "gain_bps": -0.029662780254846588,
+        "rank": 2
+      },
+      {
+        "key": "markov",
+        "name": "状态转移",
+        "description": "号码上期状态到本期状态的条件概率。",
+        "brier": 0.13068477070367873,
+        "front_top_hits": 0.6583333333333333,
+        "back_top_hits": 0.32916666666666666,
+        "prize_hits": 13,
+        "prize_rate": 0.05416666666666667,
+        "tier_hits": {
+          "9": 11,
+          "8": 2
+        },
+        "next_ticket": {
+          "front": [
+            3,
+            14,
+            20,
+            23,
+            28
+          ],
+          "back": [
+            8,
+            10
+          ]
+        },
+        "gain_bps": -0.15836463315904714,
+        "rank": 3
+      },
+      {
+        "key": "neighbor",
+        "name": "邻号跟随",
+        "description": "验证集排名第一的单模型。",
+        "brier": 0.13070794458096108,
+        "front_top_hits": 0.7166666666666667,
+        "back_top_hits": 0.3125,
+        "prize_hits": 15,
+        "prize_rate": 0.0625,
+        "tier_hits": {
+          "9": 13,
+          "8": 2
+        },
+        "next_ticket": {
+          "front": [
+            10,
+            16,
+            20,
+            27,
+            32
+          ],
+          "back": [
+            8,
+            10
+          ]
+        },
+        "gain_bps": -0.3901034059825004,
+        "rank": 4
+      },
+      {
+        "key": "cycle_cont",
+        "name": "五期延续",
+        "description": "提高最近五期出现较多号码的权重。",
+        "brier": 0.13089901767998866,
+        "front_top_hits": 0.7083333333333334,
+        "back_top_hits": 0.35833333333333334,
+        "prize_hits": 16,
+        "prize_rate": 0.06666666666666667,
+        "tier_hits": {
+          "9": 15,
+          "8": 1
+        },
+        "next_ticket": {
+          "front": [
+            3,
+            8,
+            20,
+            24,
+            28
+          ],
+          "back": [
+            5,
+            11
+          ]
+        },
+        "gain_bps": -2.300834396258278,
+        "rank": 5
+      },
+      {
+        "key": "cycle_rev",
+        "name": "五期反转",
+        "description": "提高最近五期出现较少号码的权重。",
+        "brier": 0.13093953639840708,
+        "front_top_hits": 0.7291666666666666,
+        "back_top_hits": 0.30416666666666664,
+        "prize_hits": 15,
+        "prize_rate": 0.0625,
+        "tier_hits": {
+          "9": 14,
+          "8": 1
+        },
+        "next_ticket": {
+          "front": [
+            10,
+            14,
+            17,
+            19,
+            32
+          ],
+          "back": [
+            7,
+            12
+          ]
+        },
+        "gain_bps": -2.7060215804425303,
+        "rank": 6
+      }
+    ],
+    "next_tickets": [
+      {
+        "key": "uniform",
+        "label": "均匀对照",
+        "front": [
+          1,
+          7,
+          9,
+          18,
+          34
+        ],
+        "back": [
+          3,
+          4
+        ],
+        "note": "无显著优势时最稳健的参考票。",
+        "brier": 0.13066893424036283,
+        "gain_bps": 0.0
+      },
+      {
+        "key": "fusion",
+        "label": "堆叠融合",
+        "front": [
+          8,
+          13,
+          26,
+          30,
+          34
+        ],
+        "back": [
+          2,
+          8
+        ],
+        "note": "融合挑战票，未通过显著性门槛。",
+        "brier": 0.1306719005183883,
+        "gain_bps": -0.029662780254846588
+      },
+      {
+        "key": "neighbor",
+        "label": "邻号跟随",
+        "front": [
+          10,
+          16,
+          20,
+          27,
+          32
+        ],
+        "back": [
+          8,
+          10
+        ],
+        "note": "最佳单模型探索票，优势极小。",
+        "brier": 0.13070794458096108,
+        "gain_bps": -0.3901034059825004
+      },
+      {
+        "key": "markov",
+        "label": "状态转移",
+        "front": [
+          3,
+          14,
+          20,
+          23,
+          28
+        ],
+        "back": [
+          8,
+          10
+        ],
+        "note": "状态转移探索票。",
+        "brier": 0.13068477070367873,
+        "gain_bps": -0.15836463315904714
+      },
+      {
+        "key": "cycle_cont",
+        "label": "五期延续",
+        "front": [
+          3,
+          8,
+          20,
+          24,
+          28
+        ],
+        "back": [
+          5,
+          11
+        ],
+        "note": "五期热度延续探索票。",
+        "brier": 0.13089901767998866,
+        "gain_bps": -2.300834396258278
+      },
+      {
+        "key": "cycle_rev",
+        "label": "五期反转",
+        "front": [
+          10,
+          14,
+          17,
+          19,
+          32
+        ],
+        "back": [
+          7,
+          12
+        ],
+        "note": "五期冷号反转探索票。",
+        "brier": 0.13093953639840708,
+        "gain_bps": -2.7060215804425303
+      }
+    ],
+    "primary_ticket": {
+      "key": "uniform",
+      "label": "均匀对照",
+      "front": [
+        1,
+        7,
+        9,
+        18,
+        34
+      ],
+      "back": [
+        3,
+        4
+      ],
+      "note": "无显著优势时最稳健的参考票。",
+      "brier": 0.13066893424036283,
+      "gain_bps": 0.0
+    },
+    "note": "号码由各模型概率向量使用固定期号种子生成，可复现。Brier 是模型排序的主要依据，单票命中次数样本很小，不应据此宣称模型优势。"
+  },
+  "multiframe": {
+    "windows": {
+      "background": 10,
+      "short": 5
+    },
+    "selected": {
+      "alpha": 0.0,
+      "beta": 0.0,
+      "passes_gate": false,
+      "sign_stable": false,
+      "name": "均匀基线"
+    },
+    "training_best": {
+      "alpha": 0.0,
+      "beta": -0.1,
+      "train_brier": 0.13065139781310683
+    },
+    "validation_best": {
+      "alpha": -0.05,
+      "beta": 0.15,
+      "validation_brier": 0.13061431681104071
+    },
+    "selection_gate": {
+      "validation_gain_bps": -0.7967403968253673,
+      "validation_ci_low_bps": -1.8109823809523464,
+      "validation_ci_high_bps": 0.2288765873016148
+    },
+    "comparisons": [
+      {
+        "key": "uniform",
+        "name": "均匀基线",
+        "alpha": 0.0,
+        "beta": 0.0,
+        "train_brier": 0.13066893424036283,
+        "validation_brier": 0.13066893424036283,
+        "validation_gain_bps": 0.0,
+        "holdout_brier": 0.13066893424036283,
+        "holdout_gain_bps": 0.0
+      },
+      {
+        "key": "long10",
+        "name": "十期背景",
+        "alpha": 0.05,
+        "beta": 0.0,
+        "train_brier": 0.1306734831479706,
+        "validation_brier": 0.1306861814281943,
+        "validation_gain_bps": -0.17247187831470612,
+        "holdout_brier": 0.13066536440076318,
+        "holdout_gain_bps": 0.035698395996486276
+      },
+      {
+        "key": "short_continuation",
+        "name": "五期延续",
+        "alpha": 0.0,
+        "beta": 0.1,
+        "train_brier": 0.13072523364578245,
+        "validation_brier": 0.130627528914966,
+        "validation_gain_bps": 0.4140532539681496,
+        "holdout_brier": 0.13067092194869617,
+        "holdout_gain_bps": -0.019877083333452727
+      },
+      {
+        "key": "short_reversal",
+        "name": "五期反转",
+        "alpha": 0.0,
+        "beta": -0.1,
+        "train_brier": 0.13065139781310683,
+        "validation_brier": 0.13074860828004536,
+        "validation_gain_bps": -0.7967403968253683,
+        "holdout_brier": 0.13070693385345805,
+        "holdout_gain_bps": -0.3799961309522426
+      },
+      {
+        "key": "train_best",
+        "name": "训练集最优 10+5",
+        "alpha": 0.0,
+        "beta": -0.1,
+        "train_brier": 0.13065139781310683,
+        "validation_brier": 0.13074860828004536,
+        "validation_gain_bps": -0.7967403968253683,
+        "holdout_brier": 0.13070693385345805,
+        "holdout_gain_bps": -0.3799961309522426
+      },
+      {
+        "key": "validation_best",
+        "name": "验证集最优 10+5",
+        "alpha": -0.05,
+        "beta": 0.15,
+        "train_brier": 0.13076942266378103,
+        "validation_brier": 0.13061431681104071,
+        "validation_gain_bps": 0.5461742932211244,
+        "holdout_brier": 0.13069855871924316,
+        "holdout_gain_bps": -0.2962447888033015
+      }
+    ],
+    "next_tickets": [
+      {
+        "label": "10+5 训练外推",
+        "alpha": 0.0,
+        "beta": -0.1,
+        "front": [
+          17,
+          26,
+          29,
+          32,
+          34
+        ],
+        "back": [
+          8,
+          9
+        ]
+      },
+      {
+        "label": "10+5 验证外推",
+        "alpha": -0.05,
+        "beta": 0.15,
+        "front": [
+          9,
+          10,
+          19,
+          22,
+          34
+        ],
+        "back": [
+          3,
+          9
+        ]
+      }
+    ],
+    "current_state": {
+      "short_acceleration_front": [
+        {
+          "number": 2,
+          "acceleration": 0.020000000000000004
+        },
+        {
+          "number": 11,
+          "acceleration": 0.020000000000000004
+        },
+        {
+          "number": 17,
+          "acceleration": 0.020000000000000004
+        },
+        {
+          "number": 27,
+          "acceleration": 0.020000000000000004
+        },
+        {
+          "number": 29,
+          "acceleration": 0.020000000000000004
+        },
+        {
+          "number": 1,
+          "acceleration": 0.02
+        },
+        {
+          "number": 3,
+          "acceleration": 0.02
+        },
+        {
+          "number": 6,
+          "acceleration": 0.02
+        }
+      ],
+      "short_acceleration_back": [
+        {
+          "number": 7,
+          "acceleration": 0.05000000000000002
+        },
+        {
+          "number": 12,
+          "acceleration": 0.05000000000000002
+        },
+        {
+          "number": 3,
+          "acceleration": 0.05
+        },
+        {
+          "number": 8,
+          "acceleration": 0.05
+        }
+      ]
+    },
+    "verdict": "训练集与验证集选择了相反方向，说明10+5参数没有跨期稳定性；系统保留均匀基线，两组外推票仅作研究。",
+    "note": "alpha 控制十期背景偏离，beta>0 表示五期延续，beta<0 表示五期反转。"
+  },
+  "regime": {
+    "definition": {
+      "background_window": 10,
+      "short_window": 5,
+      "regime_length": 5,
+      "policy_lookback": 100,
+      "hypotheses": [
+        "延续",
+        "反转",
+        "中性基线"
+      ],
+      "switch_rule": "每个五期块开始时，只使用此前已结算的滚动Brier表现选择方向；块内冻结，不能用块内开奖反改方向。"
+    },
+    "validation": {
+      "development_start_issue": "14097",
+      "development_end_issue": "23044",
+      "development_draws": 1300,
+      "validation_start_issue": "23045",
+      "validation_end_issue": "25042",
+      "validation_draws": 300,
+      "holdout_start_issue": "25043",
+      "holdout_end_issue": "26132",
+      "holdout_draws": 240,
+      "bootstrap_rounds": 1600
+    },
+    "development": [
+      {
+        "beta": 0.05,
+        "brier": 0.1306691702742456,
+        "switch_count": 50
+      },
+      {
+        "beta": 0.1,
+        "brier": 0.13067946586490495,
+        "switch_count": 45
+      },
+      {
+        "beta": 0.2,
+        "brier": 0.1306836885040991,
+        "switch_count": 38
+      },
+      {
+        "beta": 0.35,
+        "brier": 0.13070074251920896,
+        "switch_count": 24
+      }
+    ],
+    "selected": {
+      "name": "均匀基线",
+      "beta": 0.05,
+      "passes_gate": false,
+      "validation_gain_bps": -0.011505019841158887,
+      "validation_ci_low_bps": -0.42387740079352454,
+      "validation_ci_high_bps": 0.3560046825397771,
+      "relative_gain": -8.804709327463893e-06,
+      "holdout_gain_bps": 0.2832933779764457,
+      "holdout_switch_count": 2,
+      "holdout_block_count": 48
+    },
+    "holdout_comparison": {
+      "neutral_brier": 0.13066893424036283,
+      "continuation_brier": 0.1306649296793509,
+      "reversal_brier": 0.13068293563173186,
+      "adaptive_brier": 0.13064060490256518,
+      "continuation_gain_bps": 0.0400456101193325,
+      "reversal_gain_bps": -0.14001391369034,
+      "adaptive_gain_bps": 0.2832933779764457
+    },
+    "recent_blocks": [
+      {
+        "start_issue": "26073",
+        "end_index": 2894,
+        "start_index": 2890,
+        "direction": 0,
+        "direction_name": "中性",
+        "pre_block_continuation_bps": -0.019595416666517984,
+        "pre_block_reversal_bps": -0.08173827380941745,
+        "block_continuation_gain_bps": -2.085416666666451,
+        "block_reversal_gain_bps": 1.966964285714523,
+        "block_adaptive_gain_bps": 0.0,
+        "end_issue": "26077"
+      },
+      {
+        "start_issue": "26078",
+        "end_index": 2899,
+        "start_index": 2895,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.15420148809508483,
+        "pre_block_reversal_bps": 0.050798511904981414,
+        "block_continuation_gain_bps": -1.2235583333330968,
+        "block_reversal_gain_bps": 1.1288226190478423,
+        "block_adaptive_gain_bps": 1.1288226190478423,
+        "end_issue": "26082"
+      },
+      {
+        "start_issue": "26083",
+        "end_index": 2904,
+        "start_index": 2900,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.14824041666638976,
+        "pre_block_reversal_bps": 0.04366434523811469,
+        "block_continuation_gain_bps": 0.7575630952383339,
+        "block_reversal_gain_bps": -0.828151190475912,
+        "block_adaptive_gain_bps": -0.828151190475912,
+        "end_issue": "26087"
+      },
+      {
+        "start_issue": "26088",
+        "end_index": 2909,
+        "start_index": 2905,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.15542559523795685,
+        "pre_block_reversal_bps": 0.05195535714291877,
+        "block_continuation_gain_bps": -0.5926178571427632,
+        "block_reversal_gain_bps": 0.5026202380953304,
+        "block_adaptive_gain_bps": 0.5026202380953304,
+        "end_issue": "26092"
+      },
+      {
+        "start_issue": "26093",
+        "end_index": 2914,
+        "start_index": 2910,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.17515482142849148,
+        "pre_block_reversal_bps": 0.07151184523823684,
+        "block_continuation_gain_bps": -2.3704452380951535,
+        "block_reversal_gain_bps": 2.2533642857144875,
+        "block_adaptive_gain_bps": 2.2533642857144875,
+        "end_issue": "26097"
+      },
+      {
+        "start_issue": "26098",
+        "end_index": 2919,
+        "start_index": 2915,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.2757037499998005,
+        "pre_block_reversal_bps": 0.17191529761928503,
+        "block_continuation_gain_bps": -1.2414511904762504,
+        "block_reversal_gain_bps": 1.1442630952382404,
+        "block_adaptive_gain_bps": 1.1442630952382404,
+        "end_issue": "26102"
+      },
+      {
+        "start_issue": "26103",
+        "end_index": 2924,
+        "start_index": 2920,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.45882999999996565,
+        "pre_block_reversal_bps": 0.35402714285731607,
+        "block_continuation_gain_bps": 0.6725500000001605,
+        "block_reversal_gain_bps": -0.7655452380950223,
+        "block_adaptive_gain_bps": -0.7655452380950223,
+        "end_issue": "26107"
+      },
+      {
+        "start_issue": "26108",
+        "end_index": 2929,
+        "start_index": 2925,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.38775285714276464,
+        "pre_block_reversal_bps": 0.28129476190491554,
+        "block_continuation_gain_bps": 0.7139976190476127,
+        "block_reversal_gain_bps": -0.838383333333359,
+        "block_adaptive_gain_bps": -0.838383333333359,
+        "end_issue": "26112"
+      },
+      {
+        "start_issue": "26113",
+        "end_index": 2934,
+        "start_index": 2930,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.22354577380950813,
+        "pre_block_reversal_bps": 0.11621613095258443,
+        "block_continuation_gain_bps": 0.6068321428573387,
+        "block_reversal_gain_bps": -0.7169773809520552,
+        "block_adaptive_gain_bps": -0.7169773809520552,
+        "end_issue": "26117"
+      },
+      {
+        "start_issue": "26118",
+        "end_index": 2939,
+        "start_index": 2935,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.21178053571407895,
+        "pre_block_reversal_bps": 0.10512422619068928,
+        "block_continuation_gain_bps": 0.8365595238096768,
+        "block_reversal_gain_bps": -0.9443928571425952,
+        "block_adaptive_gain_bps": -0.9443928571425952,
+        "end_issue": "26122"
+      },
+      {
+        "start_issue": "26123",
+        "end_index": 2944,
+        "start_index": 2940,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.24986374999980132,
+        "pre_block_reversal_bps": 0.14466005952396,
+        "block_continuation_gain_bps": -3.849944047618903,
+        "block_reversal_gain_bps": 3.7643416666668927,
+        "block_adaptive_gain_bps": 3.7643416666668927,
+        "end_issue": "26127"
+      },
+      {
+        "start_issue": "26128",
+        "end_index": 2949,
+        "start_index": 2945,
+        "direction": -1,
+        "direction_name": "反转",
+        "pre_block_continuation_bps": -0.3801778571427272,
+        "pre_block_reversal_bps": 0.2757745238096687,
+        "block_continuation_gain_bps": 0.36478928571420655,
+        "block_reversal_gain_bps": -0.4352107142854833,
+        "block_adaptive_gain_bps": -0.4352107142854833,
+        "end_issue": "26132"
+      }
+    ],
+    "live": {
+      "block_start_index": 2950,
+      "direction": 0,
+      "direction_name": "中性",
+      "pre_block_evidence": {
+        "continuation_bps": -0.2883673809522813,
+        "reversal_bps": 0.1854421428573727
+      },
+      "ticket": null,
+      "front_acceleration_top": [
+        {
+          "number": 2,
+          "acceleration_bps": 600.0
+        },
+        {
+          "number": 11,
+          "acceleration_bps": 200.00000000000003
+        },
+        {
+          "number": 29,
+          "acceleration_bps": 200.00000000000003
+        },
+        {
+          "number": 1,
+          "acceleration_bps": 200.0
+        },
+        {
+          "number": 3,
+          "acceleration_bps": 200.0
+        },
+        {
+          "number": 7,
+          "acceleration_bps": 200.0
+        },
+        {
+          "number": 9,
+          "acceleration_bps": 200.0
+        },
+        {
+          "number": 16,
+          "acceleration_bps": 200.0
+        }
+      ],
+      "front_deceleration_top": [
+        {
+          "number": 25,
+          "acceleration_bps": -199.99999999999997
+        },
+        {
+          "number": 27,
+          "acceleration_bps": -199.99999999999997
+        },
+        {
+          "number": 6,
+          "acceleration_bps": -200.0
+        },
+        {
+          "number": 22,
+          "acceleration_bps": -200.0
+        },
+        {
+          "number": 23,
+          "acceleration_bps": -200.0
+        },
+        {
+          "number": 28,
+          "acceleration_bps": -200.0
+        },
+        {
+          "number": 5,
+          "acceleration_bps": -400.0
+        },
+        {
+          "number": 18,
+          "acceleration_bps": -400.0
+        }
+      ]
+    },
+    "verdict": "每五期重新估计延续或反转；验证门槛与独立留出均未给出稳定优势，系统保持中性基线。规律会变化，但没有证据证明这次变化可被提前识别。",
+    "leakage_guard": "方向选择不使用块内开奖，截止到五期块开始前；实际开奖只在预测完成后进入下一块评分。",
+    "label": "规则生成，非预测"
+  },
+  "shortterm": {
+    "latest_draw": {
+      "issue": "26132",
+      "date": "2026-11-18",
+      "front": [
+        2,
+        9,
+        16,
+        26,
+        35
+      ],
+      "back": [
+        6,
+        11
+      ]
+    },
+    "postmortem": {
+      "selected_policy": "cold5",
+      "selected_policy_name": "五期回补",
+      "actual_draw": {
+        "issue": "26132",
+        "front": [
+          2,
+          9,
+          16,
+          26,
+          35
+        ],
+        "back": [
+          6,
+          11
+        ]
+      },
+      "front_hits": [
+        9
+      ],
+      "back_hits": [],
+      "tier": null,
+      "attribution": "五期回补只命中1+0，方向部分有效但未达到奖级。更新评分后仍暂时选择“五期回补”。",
+      "all_policies": {
+        "hot5": {
+          "front_hits": [
+            2
+          ],
+          "back_hits": [],
+          "front_count": 1,
+          "back_count": 0,
+          "tier": null,
+          "score": 1,
+          "prediction": {
+            "front": [
+              2,
+              11,
+              18,
+              27,
+              29
+            ],
+            "back": [
+              7,
+              12
+            ]
+          }
+        },
+        "cold5": {
+          "front_hits": [
+            9
+          ],
+          "back_hits": [],
+          "front_count": 1,
+          "back_count": 0,
+          "tier": null,
+          "score": 1,
+          "prediction": {
+            "front": [
+              4,
+              8,
+              9,
+              10,
+              15
+            ],
+            "back": [
+              1,
+              5
+            ]
+          }
+        },
+        "hot10": {
+          "front_hits": [
+            2
+          ],
+          "back_hits": [],
+          "front_count": 1,
+          "back_count": 0,
+          "tier": null,
+          "score": 1,
+          "prediction": {
+            "front": [
+              2,
+              11,
+              18,
+              27,
+              29
+            ],
+            "back": [
+              7,
+              9
+            ]
+          }
+        },
+        "repeat": {
+          "front_hits": [
+            2
+          ],
+          "back_hits": [],
+          "front_count": 1,
+          "back_count": 0,
+          "tier": null,
+          "score": 1,
+          "prediction": {
+            "front": [
+              2,
+              11,
+              18,
+              19,
+              29
+            ],
+            "back": [
+              4,
+              7
+            ]
+          }
+        }
+      }
+    },
+    "next": {
+      "issue": "26133",
+      "date": "2026-11-21",
+      "selected_policy": "cold5",
+      "selected_policy_name": "五期回补",
+      "logic": "最近五期出现较少的号码反转回补。",
+      "front": [
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "back": [
+        1,
+        3
+      ],
+      "alternatives": {
+        "五期热号": {
+          "front": [
+            2,
+            9,
+            11,
+            16,
+            29
+          ],
+          "back": [
+            6,
+            7
+          ]
+        },
+        "五期回补": {
+          "front": [
+            4,
+            5,
+            6,
+            8,
+            10
+          ],
+          "back": [
+            1,
+            3
+          ]
+        },
+        "十期热号": {
+          "front": [
+            2,
+            11,
+            18,
+            27,
+            29
+          ],
+          "back": [
+            6,
+            7
+          ]
+        },
+        "上期重号": {
+          "front": [
+            2,
+            9,
+            16,
+            26,
+            35
+          ],
+          "back": [
+            6,
+            11
+          ]
+        }
+      }
+    },
+    "backtest": {
+      "holdout_draws": 240,
+      "strategies": [
+        {
+          "key": "repeat",
+          "name": "上期重号",
+          "source": "最近开奖直接统计",
+          "front_hits": 0.7458333333333333,
+          "back_hits": 0.3541666666666667,
+          "prize_hits": 22,
+          "rank": 1
+        },
+        {
+          "key": "meta20",
+          "name": "20期滚动切换",
+          "source": "按过去20期命中解释自动切换",
+          "front_hits": 0.6958333333333333,
+          "back_hits": 0.3875,
+          "prize_hits": 20,
+          "rank": 2
+        },
+        {
+          "key": "hot5",
+          "name": "五期热号",
+          "source": "最近开奖直接统计",
+          "front_hits": 0.6833333333333333,
+          "back_hits": 0.35,
+          "prize_hits": 18,
+          "rank": 3
+        },
+        {
+          "key": "cold5",
+          "name": "五期回补",
+          "source": "最近开奖直接统计",
+          "front_hits": 0.7291666666666666,
+          "back_hits": 0.30416666666666664,
+          "prize_hits": 15,
+          "rank": 4
+        },
+        {
+          "key": "hot10",
+          "name": "十期热号",
+          "source": "最近开奖直接统计",
+          "front_hits": 0.6916666666666667,
+          "back_hits": 0.35,
+          "prize_hits": 12,
+          "rank": 5
+        }
+      ],
+      "five_ticket_pack_prize_hits": 52,
+      "five_ticket_pack_prize_rate": 0.21666666666666667,
+      "five_ticket_pack_tiers": {
+        "9": 45,
+        "8": 7
+      }
+    },
+    "note": "短期策略只使用最近5/10期开奖，并在每期开奖后用真实命中更新20期滚动选择。提高短期覆盖不等于保证中奖，单票命中仍具有显著随机波动。"
+  },
+  "patterns": {
+    "latest": {
+      "issue": "26132",
+      "front": [
+        2,
+        9,
+        16,
+        26,
+        35
+      ],
+      "back": [
+        6,
+        11
+      ],
+      "consecutive_pairs": 0,
+      "repeat_count": 1,
+      "tail_groups": 4
+    },
+    "windows": [
+      {
+        "window": 5,
+        "draws": 5,
+        "consecutive_draw_rate": 0.2,
+        "average_consecutive_pairs": 0.2,
+        "back_consecutive_draw_rate": 0.2,
+        "average_repeat_count": 0.6,
+        "average_tail_groups": 3.8
+      },
+      {
+        "window": 10,
+        "draws": 10,
+        "consecutive_draw_rate": 0.4,
+        "average_consecutive_pairs": 0.6,
+        "back_consecutive_draw_rate": 0.1,
+        "average_repeat_count": 0.8,
+        "average_tail_groups": 3.9
+      },
+      {
+        "window": 15,
+        "draws": 15,
+        "consecutive_draw_rate": 0.4,
+        "average_consecutive_pairs": 0.5333333333333333,
+        "back_consecutive_draw_rate": 0.13333333333333333,
+        "average_repeat_count": 0.8666666666666667,
+        "average_tail_groups": 4.066666666666666
+      },
+      {
+        "window": 50,
+        "draws": 50,
+        "consecutive_draw_rate": 0.46,
+        "average_consecutive_pairs": 0.58,
+        "back_consecutive_draw_rate": 0.2,
+        "average_repeat_count": 0.8,
+        "average_tail_groups": 4.24
+      }
+    ],
+    "transition_tests": [
+      {
+        "condition_window": 5,
+        "active_rate": 0.493681550126369,
+        "inactive_rate": 0.5078809106830122,
+        "difference": -0.014199360556643226,
+        "active_samples": 2374,
+        "inactive_samples": 571
+      },
+      {
+        "condition_window": 10,
+        "active_rate": 0.4870530209617756,
+        "inactive_rate": 0.5443786982248521,
+        "difference": -0.05732567726307647,
+        "active_samples": 2433,
+        "inactive_samples": 507
+      },
+      {
+        "condition_window": 15,
+        "active_rate": 0.49779911964785917,
+        "inactive_rate": 0.4908256880733945,
+        "difference": 0.006973431574464672,
+        "active_samples": 2499,
+        "inactive_samples": 436
+      }
+    ],
+    "next_pattern_ticket": {
+      "label": "形态灵感",
+      "front": [
+        2,
+        17,
+        18,
+        20,
+        29
+      ],
+      "back": [
+        1,
+        8
+      ],
+      "logic": "包含一组二连号、尾数至少四组，并参考近十期热度；仅作结构娱乐。"
+    },
+    "verdict": "连号、重号和同尾号是组合数学下的常见形态，但不能提前决定下一期出现位置。近50期有 46.0% 的期数出现前区连号，更适合作为分散过滤条件。",
+    "note": "形态过滤不改变单注理论中奖概率；形态票只用于增加组合结构的娱乐性。"
+  },
+  "scheme_audit": {
+    "rows": [
+      {
+        "front_count": 5,
+        "back_count": 2,
+        "name": "单式",
+        "ticket_count": 1,
+        "cost": 2,
+        "jackpot_probability": 4.6672894697735135e-08,
+        "any_prize_probability": 0.06670476108331896,
+        "expected_prize": 0.9810630391802414,
+        "expected_net": -1.0189369608197585,
+        "return_ratio": 0.4905315195901207
+      },
+      {
+        "front_count": 6,
+        "back_count": 2,
+        "name": "6+2 小复式",
+        "ticket_count": 6,
+        "cost": 12,
+        "jackpot_probability": 2.8003736818641077e-07,
+        "any_prize_probability": 0.09228617466714759,
+        "expected_prize": 5.886378235081448,
+        "expected_net": -6.113621764918551,
+        "return_ratio": 0.4905315195901207
+      },
+      {
+        "front_count": 7,
+        "back_count": 3,
+        "name": "7+3 复式",
+        "ticket_count": 63,
+        "cost": 126,
+        "jackpot_probability": 2.9403923659573132e-06,
+        "any_prize_probability": 0.17399379773236942,
+        "expected_prize": 61.80697146835521,
+        "expected_net": -64.19302853164479,
+        "return_ratio": 0.4905315195901207
+      },
+      {
+        "front_count": 8,
+        "back_count": 3,
+        "name": "8+3 复式",
+        "ticket_count": 168,
+        "cost": 336,
+        "jackpot_probability": 7.841046309219502e-06,
+        "any_prize_probability": 0.21218067338905702,
+        "expected_prize": 164.81859058228056,
+        "expected_net": -171.18140941771944,
+        "return_ratio": 0.4905315195901207
+      },
+      {
+        "front_count": 10,
+        "back_count": 4,
+        "name": "10+4 复式",
+        "ticket_count": 1512,
+        "cost": 3024,
+        "jackpot_probability": 7.056941678297552e-05,
+        "any_prize_probability": 0.36171082669271387,
+        "expected_prize": 1483.367315240525,
+        "expected_net": -1540.6326847594748,
+        "return_ratio": 0.4905315195901207
+      },
+      {
+        "front_count": 15,
+        "back_count": 5,
+        "name": "15+5 大复式",
+        "ticket_count": 30030,
+        "cost": 60060,
+        "jackpot_probability": 0.001401587027772986,
+        "any_prize_probability": 0.6522064704314143,
+        "expected_prize": 29461.32306658265,
+        "expected_net": -30598.676933417348,
+        "return_ratio": 0.4905315195901207
+      },
+      {
+        "front_count": 18,
+        "back_count": 2,
+        "name": "18+2 大复式",
+        "ticket_count": 8568,
+        "cost": 17136,
+        "jackpot_probability": 0.0003998933617701946,
+        "any_prize_probability": 0.6327487273235074,
+        "expected_prize": 8405.748119696309,
+        "expected_net": -8730.251880303691,
+        "return_ratio": 0.4905315195901207
+      }
+    ],
+    "payout_ratio": 0.4905315195901207,
+    "case": {
+      "front_count": 15,
+      "back_count": 5,
+      "exact_ticket_count": 30030,
+      "exact_cost": 60060,
+      "conversation_screenshot_count": 30199,
+      "explanation": "15+5标准复式应为30030注、60060元；截图中的30199注可能包含胆拖或额外组合。中奖展示必须同时披露成本和未中奖样本，否则容易产生幸存者偏差。"
+    },
+    "note": "任意奖概率按所选号码池覆盖全部组合计算；返奖率为近期历史估计，不是未来保证。"
+  },
+  "jackpot": {
+    "target_issue": "26133",
+    "target_date": "2026-11-21",
+    "draw_combinations": 21425712,
+    "draws_per_year": 156,
+    "rows": [
+      {
+        "tickets_per_draw": 1,
+        "years": 1,
+        "draw_count": 156,
+        "cost_per_draw": 2,
+        "total_cost": 312,
+        "jackpot_probability": 7.280945230693551e-06,
+        "one_in": 137344.8045982272,
+        "expected_prize": 153.04583411211766,
+        "expected_net": -158.9541658878823
+      },
+      {
+        "tickets_per_draw": 1,
+        "years": 2,
+        "draw_count": 312,
+        "cost_per_draw": 2,
+        "total_cost": 624,
+        "jackpot_probability": 1.456183744922365e-05,
+        "one_in": 68672.65230002372,
+        "expected_prize": 306.0916682242353,
+        "expected_net": -317.9083317757646
+      },
+      {
+        "tickets_per_draw": 1,
+        "years": 3,
+        "draw_count": 468,
+        "cost_per_draw": 2,
+        "total_cost": 936,
+        "jackpot_probability": 2.1842676655976275e-05,
+        "one_in": 45781.93486769372,
+        "expected_prize": 459.13750233635295,
+        "expected_net": -476.862497663647
+      },
+      {
+        "tickets_per_draw": 1,
+        "years": 5,
+        "draw_count": 780,
+        "cost_per_draw": 2,
+        "total_cost": 1560,
+        "jackpot_probability": 3.640419603569301e-05,
+        "one_in": 27469.360922557826,
+        "expected_prize": 765.2291705605883,
+        "expected_net": -794.7708294394116
+      },
+      {
+        "tickets_per_draw": 1,
+        "years": 10,
+        "draw_count": 1560,
+        "cost_per_draw": 2,
+        "total_cost": 3120,
+        "jackpot_probability": 7.2807066805897e-05,
+        "one_in": 13734.93046582952,
+        "expected_prize": 1530.4583411211765,
+        "expected_net": -1589.5416588788232
+      },
+      {
+        "tickets_per_draw": 2,
+        "years": 1,
+        "draw_count": 156,
+        "cost_per_draw": 4,
+        "total_cost": 624,
+        "jackpot_probability": 1.456183780636198e-05,
+        "one_in": 68672.65061578326,
+        "expected_prize": 306.0916682242353,
+        "expected_net": -317.9083317757646
+      },
+      {
+        "tickets_per_draw": 2,
+        "years": 2,
+        "draw_count": 312,
+        "cost_per_draw": 4,
+        "total_cost": 1248,
+        "jackpot_probability": 2.9123463565603664e-05,
+        "one_in": 34336.57530971187,
+        "expected_prize": 612.1833364484706,
+        "expected_net": -635.8166635515292
+      },
+      {
+        "tickets_per_draw": 2,
+        "years": 3,
+        "draw_count": 468,
+        "cost_per_draw": 4,
+        "total_cost": 1872,
+        "jackpot_probability": 4.3684877280812845e-05,
+        "one_in": 22891.21687516374,
+        "expected_prize": 918.2750046727059,
+        "expected_net": -953.724995327294
+      },
+      {
+        "tickets_per_draw": 2,
+        "years": 5,
+        "draw_count": 780,
+        "cost_per_draw": 4,
+        "total_cost": 3120,
+        "jackpot_probability": 7.280706859148465e-05,
+        "one_in": 13734.930128981428,
+        "expected_prize": 1530.4583411211765,
+        "expected_net": -1589.5416588788232
+      },
+      {
+        "tickets_per_draw": 2,
+        "years": 10,
+        "draw_count": 1560,
+        "cost_per_draw": 4,
+        "total_cost": 6240,
+        "jackpot_probability": 0.0001456088363137324,
+        "one_in": 6867.7150735919295,
+        "expected_prize": 3060.916682242353,
+        "expected_net": -3179.0833177576465
+      },
+      {
+        "tickets_per_draw": 3,
+        "years": 1,
+        "draw_count": 156,
+        "cost_per_draw": 6,
+        "total_cost": 936,
+        "jackpot_probability": 2.1842677692745293e-05,
+        "one_in": 45781.932694640935,
+        "expected_prize": 459.13750233635295,
+        "expected_net": -476.862497663647
+      },
+      {
+        "tickets_per_draw": 3,
+        "years": 2,
+        "draw_count": 312,
+        "cost_per_draw": 6,
+        "total_cost": 1872,
+        "jackpot_probability": 4.3684878282921804e-05,
+        "one_in": 22891.21635005083,
+        "expected_prize": 918.2750046727059,
+        "expected_net": -953.724995327294
+      },
+      {
+        "tickets_per_draw": 3,
+        "years": 3,
+        "draw_count": 468,
+        "cost_per_draw": 6,
+        "total_cost": 2808,
+        "jackpot_probability": 6.552660178095072e-05,
+        "one_in": 15260.97756973429,
+        "expected_prize": 1377.412507009059,
+        "expected_net": -1430.587492990941
+      },
+      {
+        "tickets_per_draw": 3,
+        "years": 5,
+        "draw_count": 780,
+        "cost_per_draw": 6,
+        "total_cost": 4680,
+        "jackpot_probability": 0.00010920861754224942,
+        "one_in": 9156.786547665353,
+        "expected_prize": 2295.687511681765,
+        "expected_net": -2384.312488318235
+      },
+      {
+        "tickets_per_draw": 3,
+        "years": 10,
+        "draw_count": 1560,
+        "cost_per_draw": 6,
+        "total_cost": 9360,
+        "jackpot_probability": 0.00021840530856235334,
+        "one_in": 4578.6432874844995,
+        "expected_prize": 4591.37502336353,
+        "expected_net": -4768.62497663647
+      },
+      {
+        "tickets_per_draw": 5,
+        "years": 1,
+        "draw_count": 156,
+        "cost_per_draw": 10,
+        "total_cost": 1560,
+        "jackpot_probability": 3.640419946844782e-05,
+        "one_in": 27469.358332318723,
+        "expected_prize": 765.2291705605883,
+        "expected_net": -794.7708294394116
+      },
+      {
+        "tickets_per_draw": 5,
+        "years": 2,
+        "draw_count": 312,
+        "cost_per_draw": 10,
+        "total_cost": 3120,
+        "jackpot_probability": 7.280707367115671e-05,
+        "one_in": 13734.92917070997,
+        "expected_prize": 1530.4583411211765,
+        "expected_net": -1589.5416588788232
+      },
+      {
+        "tickets_per_draw": 5,
+        "years": 3,
+        "draw_count": 468,
+        "cost_per_draw": 10,
+        "total_cost": 4680,
+        "jackpot_probability": 0.0001092086226563719,
+        "one_in": 9156.786118862876,
+        "expected_prize": 2295.687511681765,
+        "expected_net": -2384.312488318235
+      },
+      {
+        "tickets_per_draw": 5,
+        "years": 5,
+        "draw_count": 780,
+        "cost_per_draw": 10,
+        "total_cost": 7800,
+        "jackpot_probability": 0.00018200774516729333,
+        "one_in": 5494.27168102569,
+        "expected_prize": 3826.1458528029416,
+        "expected_net": -3973.854147197058
+      },
+      {
+        "tickets_per_draw": 5,
+        "years": 10,
+        "draw_count": 1560,
+        "cost_per_draw": 10,
+        "total_cost": 15600,
+        "jackpot_probability": 0.0003639823635152858,
+        "one_in": 2747.3858632658835,
+        "expected_prize": 7652.291705605883,
+        "expected_net": -7947.708294394116
+      },
+      {
+        "tickets_per_draw": 10,
+        "years": 1,
+        "draw_count": 156,
+        "cost_per_draw": 20,
+        "total_cost": 3120,
+        "jackpot_probability": 7.28070821488244e-05,
+        "one_in": 13734.927571412733,
+        "expected_prize": 1530.4583411211765,
+        "expected_net": -1589.5416588788232
+      },
+      {
+        "tickets_per_draw": 10,
+        "years": 2,
+        "draw_count": 312,
+        "cost_per_draw": 20,
+        "total_cost": 6240,
+        "jackpot_probability": 0.00014560886342643777,
+        "one_in": 6867.713794807582,
+        "expected_prize": 3060.916682242353,
+        "expected_net": -3179.0833177576465
+      },
+      {
+        "tickets_per_draw": 10,
+        "years": 3,
+        "draw_count": 468,
+        "cost_per_draw": 20,
+        "total_cost": 9360,
+        "jackpot_probability": 0.00021840534421878108,
+        "one_in": 4578.642539984185,
+        "expected_prize": 4591.37502336353,
+        "expected_net": -4768.62497663647
+      },
+      {
+        "tickets_per_draw": 10,
+        "years": 5,
+        "draw_count": 780,
+        "cost_per_draw": 20,
+        "total_cost": 15600,
+        "jackpot_probability": 0.0003639824058912809,
+        "one_in": 2747.3855434064394,
+        "expected_prize": 7652.291705605883,
+        "expected_net": -7947.708294394116
+      },
+      {
+        "tickets_per_draw": 10,
+        "years": 10,
+        "draw_count": 1560,
+        "cost_per_draw": 20,
+        "total_cost": 31200,
+        "jackpot_probability": 0.0007278323285907634,
+        "one_in": 1373.9428172093021,
+        "expected_prize": 15304.583411211766,
+        "expected_net": -15895.416588788232
+      }
+    ],
+    "recommended": {
+      "tickets_per_draw": 3,
+      "years": 1,
+      "draw_count": 156,
+      "cost_per_draw": 6,
+      "total_cost": 936,
+      "jackpot_probability": 2.1842677692745293e-05,
+      "one_in": 45781.932694640935,
+      "expected_prize": 459.13750233635295,
+      "expected_net": -476.862497663647,
+      "tickets": [
+        {
+          "front": [
+            5,
+            6,
+            9,
+            13,
+            32
+          ],
+          "back": [
+            5,
+            8
+          ]
+        },
+        {
+          "front": [
+            11,
+            15,
+            21,
+            22,
+            28
+          ],
+          "back": [
+            11,
+            12
+          ]
+        },
+        {
+          "front": [
+            1,
+            4,
+            19,
+            26,
+            31
+          ],
+          "back": [
+            6,
+            9
+          ]
+        }
+      ],
+      "rule": "每期固定3注、最多6元；不同组合且低重叠，命中一等奖后立即停止。"
+    },
+    "expected_spend_to_first_prize": 42851424,
+    "guaranteed_coverage_cost": 42851424,
+    "verdict": "不选号码无法改变单注一等奖概率。固定预算下，唯一可控的是每期购买不重复注数；3注/期是成本较低、仍保留明确覆盖上限的折中方案。",
+    "warning": "任何有限期、合理注数方案都不能保证中一等奖。只有一次购买全部21,425,712种组合才数学上保证至少一注一等奖，成本为42,851,424元。"
+  },
+  "disclaimer": "彩票开奖按规则独立随机。历史模型仅用于概率校准和组合分析，不构成收益承诺，也不能提高单注组合的理论中奖概率。"
+}
